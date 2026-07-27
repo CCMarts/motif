@@ -1,0 +1,2953 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Microsoft Yahei", system-ui, sans-serif;
+        }
+        body {
+            background-color: #f5f7fa;
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        h1 {
+            text-align: center;
+            color: #222;
+            margin-bottom: 40px;
+            font-size: 24px;
+        }
+        .day-wrap {
+            background: #fff;
+            border-radius: 14px;
+            padding: 25px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 12px #00000010;
+        }
+        .day-title {
+            font-size: 19px;
+            color: #2b6cb0;
+            border-left: 5px solid #2b6cb0;
+            padding-left: 12px;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+        .item {
+            padding: 14px 0;
+            border-bottom: 1px solid #eee;
+        }
+        .item:last-child {
+            border-bottom: none;
+        }
+        .word-row {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 8px;
+        }
+        .word {
+            font-size: 17px;
+            font-weight: bold;
+            color: #111;
+        }
+        .phonetic {
+            color: #666;
+        }
+        .cn-mean {
+            color: #333;
+        }
+        .audio-btn {
+            background: #e8f3ff;
+            border: none;
+            border-radius: 6px;
+            padding: 2px 10px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .audio-btn:hover {
+            background: #cce4ff;
+        }
+        .en-sent {
+            margin: 6px 0 4px;
+            color: #222;
+            padding-left: 6px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .cn-sent {
+            color: #555;
+            font-size: 14px;
+            padding-left: 6px;
+        }
+    </style>
+</head>
+<body>
+    <h1>portfolio</h1>
+
+    <script>
+        function speak(text) {
+            window.speechSynthesis.cancel();
+            let u = new SpeechSynthesisUtterance(text);
+            u.lang = "en-US";
+            u.rate = 0.92;
+            window.speechSynthesis.speak(u);
+        }
+    </script>
+
+    <!-- DAY1 基础视觉构图与美学 -->
+    <div class="day-wrap">
+        <div class="day-title">Day1 基础视觉构图与美学类</div>
+
+        <div class="item">
+            <div class="word-row">
+                <span class="word">composition</span>
+                <span class="phonetic">/ˌkɒmpəˈzɪʃn/</span>
+                <span class="cn-mean">n. 构图、画面构成</span>
+                <button class="audio-btn" onclick="speak('composition')">{>}</button>
+            </div>
+            <div class="en-sent">
+                The composition of this poster follows the golden ratio for better visual balance.
+                <button class="audio-btn" onclick="speak('The composition of this poster follows the golden ratio for better visual balance.')">{>}</button>
+            </div>
+            <div class="cn-sent">这张海报的构图遵循黄金比例，拥有更好的视觉平衡。</div>
+        </div>
+
+        <div class="item">
+            <div class="word-row">
+                <span class="word">layout</span>
+                <span class="phonetic">/ˈleɪaʊt/</span>
+                <span class="cn-mean">n. 版式、布局</span>
+                <button class="audio-btn" onclick="speak('layout')">{>}</button>
+            </div>
+            <div class="en-sent">
+                I adjusted the layout of the interface to improve information readability.
+                <button class="audio-btn" onclick="speak('I adjusted the layout of the interface to improve information readability.')">{>}</button>
+            </div>
+            <div class="cn-sent">我调整了界面布局，提升了信息可读性。</div>
+        </div>
+
+        <div class="item">
+            <div class="word-row">
+                <span class="word">hierarchy</span>
+                <span class="phonetic">/ˈhaɪərɑːki/</span>
+                <span class="cn-mean">n. 视觉层级</span>
+                <button class="audio-btn" onclick="speak('hierarchy')">{>}</button>
+            </div>
+            <div class="en-sent">
+                Font size and color build a clear visual hierarchy on the screen.
+                <button class="audio-btn" onclick="speak('Font size and color build a clear visual hierarchy on the screen.')">{>}</button>
+            </div>
+            <div class="cn-sent">字号与色彩在画面中构建出清晰的视觉层级。</div>
+        </div>
+
+        <div class="item">
+            <div class="word-row">
+                <span class="word">contrast</span>
+                <span class="phonetic">/ˈkɒntrɑːst/</span>
+                <span class="cn-mean">n. 对比、反差</span>
+                <button class="audio-btn" onclick="speak('contrast')">{>}</button>
+            </div>
+            <div class="en-sent">
+                High contrast strengthens the focus of the key visual element.
+                <button class="audio-btn" onclick="speak('High contrast strengthens the focus of the key visual element.')">{>}</button>
+            </div>
+            <div class="cn-sent">高对比度能够强化核心视觉元素的焦点。</div>
+        </div>
+
+        <div class="item">
+            <div class="word-row">
+                <span class="word">symmetry</span>
+                <span class="phonetic">/ˈsɪmətri/</span>
+                <span class="cn-mean">n. 对称</span>
+                <button class="audio-btn" onclick="speak('symmetry')">{>}</button>
+            </div>
+            <div class="en-sent">
+                Symmetry layout is widely used in minimalist UI design.
+                <button class="audio-btn" onclick="speak('Symmetry layout is widely used in minimalist UI design.')">{>}</button>
+            </div>
+            <div class="cn-sent">对称布局广泛应用于极简UI设计。</div>
+        </div>
+
+        <div class="item">
+            <div class="word-row">
+                <span class="word">proportion</span>
+                <span class="phonetic">/prəˈpɔːʃn/</span>
+                <span class="cn-mean">n. 比例</span>
+                <button class="audio-btn" onclick="speak('proportion')">{>}</button>
+            </div>
+            <div class="en-sent">
+                Check the proportion of icons before exporting the final design file.
+                <button class="audio-btn" onclick="speak('Check the proportion of icons before exporting the final design file.')">{>}</button>
+            </div>
+            <div class="cn-sent">导出最终文件前，需要核对图标比例。</div>
+        </div>
+
+        <div class="item">
+            <div class="word-row">
+                <span class="word">minimalism</span>
+                <span class="phonetic">/ˈmɪnɪməlɪzəm/</span>
+                <span class="cn-mean">n. 极简主义</span>
+                <button class="audio-btn" onclick="speak('minimalism')">{>}</button>
+            </div>
+            <div class="en-sent">
+                This motion work adopts minimalism to reduce unnecessary visual noise.
+                <button class="audio-btn" onclick="speak('This motion work adopts minimalism to reduce unnecessary visual noise.')">{>}</button>
+            </div>
+            <div class="cn-sent">该动态作品采用极简风格，减少多余视觉干扰。</div>
+        </div>
+
+        <div class="item">
+            <div class="word-row">
+                <span class="word">aesthetic</span>
+                <span class="phonetic">/iːsˈθetɪk/</span>
+                <span class="cn-mean">adj. 美学的、审美的</span>
+                <button class="audio-btn" onclick="speak('aesthetic')">{>}</button>
+            </div>
+            <div class="en-sent">
+                We optimize the aesthetic feeling of dynamic frames through color grading.
+                <button class="audio-btn" onclick="speak('We optimize the aesthetic feeling of dynamic frames through color grading.')">{>}</button>
+            </div>
+            <div class="cn-sent">我们通过调色提升动态画面的美学质感。</div>
+        </div>
+
+        <div class="item">
+            <div class="word-row">
+                <span class="word">balance</span>
+                <span class="phonetic">/ˈbæləns/</span>
+                <span class="cn-mean">n. 平衡</span>
+                <button class="audio-btn" onclick="speak('balance')">{>}</button>
+            </div>
+            <div class="en-sent">
+                Visual balance creates a stable and comfortable viewing experience.
+                <button class="audio-btn" onclick="speak('Visual balance creates a stable and comfortable viewing experience.')">{>}</button>
+            </div>
+            <div class="cn-sent">视觉平衡创造稳定舒适的观看体验。</div>
+        </div>
+
+        <div class="item">
+            <div class="word-row">
+                <span class="word">rhythm</span>
+                <span class="phonetic">/ˈrɪðəm/</span>
+                <span class="cn-mean">n. 节奏</span>
+                <button class="audio-btn" onclick="speak('rhythm')">{>}</button>
+            </div>
+            <div class="en-sent">
+                Repeating elements establish a visual rhythm across the design.
+                <button class="audio-btn" onclick="speak('Repeating elements establish a visual rhythm across the design.')">{>}</button>
+            </div>
+            <div class="cn-sent">重复元素在设计中建立视觉节奏。</div>
+        </div>
+
+        <div class="item">
+            <div class="word-row">
+                <span class="word">harmony</span>
+                <span class="phonetic">/ˈhɑːməni/</span>
+                <span class="cn-mean">n. 和谐</span>
+                <button class="audio-btn" onclick="speak('harmony')">{>}</button>
+            </div>
+            <div class="en-sent">
+                Color harmony ensures all visual elements work together seamlessly.
+                <button class="audio-btn" onclick="speak('Color harmony ensures all visual elements work together seamlessly.')">{>}</button>
+            </div>
+            <div class="cn-sent">色彩和谐确保所有视觉元素无缝协作。</div>
+        </div>
+
+        <div class="item">
+            <div class="word-row">
+                <span class="word">emphasis</span>
+                <span class="phonetic">/ˈemfəsɪs/</span>
+                <span class="cn-mean">n. 强调</span>
+                <button class="audio-btn" onclick="speak('emphasis')">{>}</button>
+            </div>
+            <div class="en-sent">
+                Use size and color to create emphasis on key information.
+                <button class="audio-btn" onclick="speak('Use size and color to create emphasis on key information.')">{>}</button>
+            </div>
+            <div class="cn-sent">运用大小和色彩对关键信息进行强调。</div>
+        </div>
+
+        <div class="item">
+            <div class="word-row">
+                <span class="word">unity</span>
+                <span class="phonetic">/ˈjuːnəti/</span>
+                <span class="cn-mean">n. 统一</span>
+                <button class="audio-btn" onclick="speak('unity')">{>}</button>
+            </div>
+            <div class="en-sent">
+                Design unity ties all components into a cohesive whole.
+                <button class="audio-btn" onclick="speak('Design unity ties all components into a cohesive whole.')">{>}</button>
+            </div>
+            <div class="cn-sent">设计统一性将所有组件整合为一个连贯整体。</div>
+        </div>
+
+        <div class="item">
+            <div class="word-row">
+                <span class="word">perspective</span>
+                <span class="phonetic">/pəˈspektɪv/</span>
+                <span class="cn-mean">n. 透视</span>
+                <button class="audio-btn" onclick="speak('perspective')">{>}</button>
+            </div>
+            <div class="en-sent">
+                One-point perspective creates a sense of depth in flat designs.
+                <button class="audio-btn" onclick="speak('One-point perspective creates a sense of depth in flat designs.')">{>}</button>
+            </div>
+            <div class="cn-sent">单点透视在平面设计中创造深度感。</div>
+        </div>
+
+        <div class="item">
+            <div class="word-row">
+                <span class="word">depth</span>
+                <span class="phonetic">/depθ/</span>
+                <span class="cn-mean">n. 深度</span>
+                <button class="audio-btn" onclick="speak('depth')">{>}</button>
+            </div>
+            <div class="en-sent">
+                Layered shadows add visual depth to the interface design.
+                <button class="audio-btn" onclick="speak('Layered shadows add visual depth to the interface design.')">{>}</button>
+            </div>
+            <div class="cn-sent">分层阴影为界面设计增加视觉深度。</div>
+        </div>
+
+        <div class="item">
+            <div class="word-row">
+                <span class="word">alignment</span>
+                <span class="phonetic">/əˈlaɪnmənt/</span>
+                <span class="cn-mean">n. 对齐</span>
+                <button class="audio-btn" onclick="speak('alignment')">{>}</button>
+            </div>
+            <div class="en-sent">
+                Consistent alignment improves readability and professionalism.
+                <button class="audio-btn" onclick="speak('Consistent alignment improves readability and professionalism.')">{>}</button>
+            </div>
+            <div class="cn-sent">一致的对齐提升可读性和专业感。</div>
+        </div>
+
+        <div class="item">
+            <div class="word-row">
+                <span class="word">whitespace</span>
+                <span class="phonetic">/ˈhwaɪtspaɪs/</span>
+                <span class="cn-mean">n. 留白</span>
+                <button class="audio-btn" onclick="speak('whitespace')">{>}</button>
+            </div>
+            <div class="en-sent">
+                Strategic whitespace guides the viewer's eye through content.
+                <button class="audio-btn" onclick="speak('Strategic whitespace guides the viewer's eye through content.')">{>}</button>
+            </div>
+            <div class="cn-sent">留白策略引导观者视线浏览内容。</div>
+        </div>
+
+        <div class="item">
+            <div class="word-row">
+                <span class="word">focal point</span>
+                <span class="phonetic">/ˈfəʊkl pɔɪnt/</span>
+                <span class="cn-mean">n. 焦点</span>
+                <button class="audio-btn" onclick="speak('focal point')">{>}</button>
+            </div>
+            <div class="en-sent">
+                The focal point draws attention to the most important element.
+                <button class="audio-btn" onclick="speak('The focal point draws attention to the most important element.')">{>}</button>
+            </div>
+            <div class="cn-sent">焦点将注意力吸引到最重要的元素上。</div>
+        </div>
+
+        <div class="item">
+            <div class="word-row">
+                <span class="word">grid</span>
+                <span class="phonetic">/ɡrɪd/</span>
+                <span class="cn-mean">n. 网格</span>
+                <button class="audio-btn" onclick="speak('grid')">{>}</button>
+            </div>
+            <div class="en-sent">
+                A 12-column grid provides flexible layout possibilities.
+                <button class="audio-btn" onclick="speak('A 12-column grid provides flexible layout possibilities.')">{>}</button>
+            </div>
+            <div class="cn-sent">12列网格提供灵活的布局可能性。</div>
+        </div>
+
+        <div class="item">
+            <div class="word-row">
+                <span class="word">visual flow</span>
+                <span class="phonetic">/ˈvɪʒuəl fləʊ/</span>
+                <span class="cn-mean">n. 视觉流</span>
+                <button class="audio-btn" onclick="speak('visual flow')">{>}</button>
+            </div>
+            <div class="en-sent">
+                Good visual flow leads users naturally through the interface.
+                <button class="audio-btn" onclick="speak('Good visual flow leads users naturally through the interface.')">{>}</button>
+            </div>
+            <div class="cn-sent">良好的视觉流引导用户自然浏览界面。</div>
+        </div>
+    </div>
+
+    <!-- DAY2 UI界面与交互设计 -->
+    <div class="day-wrap">
+        <div class="day-title">Day2 UI界面与交互设计类</div>
+
+        <div class="item">
+            <div class="word-row">
+                <span class="word">wireframe</span>
+                <span class="phonetic">/ˈwaɪəfreɪm/</span>
+                <span class="cn-mean">n. 线框图</span>
+                <button class="audio-btn" onclick="speak('wireframe')">{>}</button>
+            </div>
+            <div class="en-sent">
+                I finish the wireframe first before making high-fidelity prototypes.
+                <button class="audio-btn" onclick="speak('I finish the wireframe first before making high-fidelity prototypes.')">{>}</button>
+            </div>
+            <div class="cn-sent">制作高保真原型前，我先完成线框图设计。</div>
+        </div>
+
+        <div class="item">
+            <div class="word-row">
+                <span class="word">prototype</span>
+                <span class="phonetic">/ˈprəʊtətaɪp/</span>
+                <span class="cn-mean">n. 原型</span>
+                <button class="audio-btn" onclick="speak('prototype')">{>}</button>
+            </div>
+            <div class="en-sent">
+                Clickable prototypes help test real user operation logic.
+                <button class="audio-btn" onclick="speak('Clickable prototypes help test real user operation logic.')">{>}</button>
+            </div>
+            <div class="cn-sent">可交互原型有助于测试真实用户操作逻辑。</div>
+        </div>
+
+        <div class="item">
+            <div class="word-row">
+                <span class="word">interface</span>
+                <span class="phonetic">/ˈɪntəfeɪs/</span>
+                <span class="cn-mean">n. 界面</span>
+                <button class="audio-btn" onclick="speak('interface')">{>}</button>
+            </div>
+            <div class="en-sent">
+                The clean interface brings a comfortable browsing experience.
+                <button class="audio-btn" onclick="speak('The clean interface brings a comfortable browsing experience.')">{>}</button>
+            </div>
+            <div class="cn-sent">简洁的界面带来舒适的浏览体验。</div>
+        </div>
+
+        <div class="item">
+            <div class="word-row">
+                <span class="word">responsive</span>
+                <span class="phonetic">/rɪˈspɒnsɪv/</span>
+                <span class="cn-mean">adj. 响应式的</span>
+                <button class="audio-btn" onclick="speak('responsive')">{>}</button>
+            </div>
+            <div class="en-sent">
+                Responsive design adapts the page to mobile and desktop screens.
+                <button class="audio-btn" onclick="speak('Responsive design adapts the page to mobile and desktop screens.')">{>}</button>
+            </div>
+            <div class="cn-sent">响应式设计让页面适配手机与电脑屏幕。</div>
+        </div>
+
+        <div class="item">
+            <div class="word-row">
+                <span class="word">usability</span>
+                <span class="phonetic">/ˌjuːzəˈbɪləti/</span>
+                <span class="cn-mean">n. 可用性</span>
+                <button class="audio-btn" onclick="speak('usability')">{>}</button>
+            </div>
+            <div class="en-sent">
+                Usability testing finds unreasonable interaction steps quickly.
+                <button class="audio-btn" onclick="speak('Usability testing finds unreasonable interaction steps quickly.')">{>}</button>
+            </div>
+            <div class="cn-sent">可用性测试可以快速发现不合理的交互步骤。</div>
+        </div>
+
+        <div class="item">
+            <div class="word-row">
+                <span class="word">user flow</span>
+                <span class="phonetic">/ˈjuːzə fləʊ/</span>
+                <span class="cn-mean">n. 用户流程</span>
+                <button class="audio-btn" onclick="speak('user flow')">{>}</button>
+            </div>
+            <div class="en-sent">
+                Draw a user flow to sort out the whole operation path of the product.
+                <button class="audio-btn" onclick="speak('Draw a user flow to sort out the whole operation path of the product.')">{>}</button>
+            </div>
+            <div class="cn-sent">绘制用户流程，梳理产品完整操作路径。</div>
+        </div>
+
+        <div class="item">
+            <div class="word-row">
+                <span class="word">icon</span>
+                <span class="phonetic">/ˈaɪkɒn/</span>
+                <span class="cn-mean">n. 图标</span>
+                <button class="audio-btn" onclick="speak('icon')">{>}</button>
+            </div>
+            <div class="en-sent">
+                Vector icons will not blur after scaling up the canvas.
+                <button class="audio-btn" onclick="speak('Vector icons will not blur after scaling up the canvas.')">{>}</button>
+            </div>
+            <div class="cn-sent">矢量图标放大画布后不会模糊。</div>
+        </div>
+
+        <div class="item">
+            <div class="word-row">
+                <span class="word">pixel</span>
+                <span class="phonetic">/ˈpɪksl/</span>
+                <span class="cn-mean">n. 像素</span>
+                <button class="audio-btn" onclick="speak('pixel')">{>}</button>
+            </div>
+            <div class="en-sent">
+                This canvas is set to 1920×1080 pixels for HD export.
+                <button class="audio-btn" onclick="speak('This canvas is set to 1920×1080 pixels for HD export.')">{>}</button>
+            </div>
+            <div class="cn-sent">画布设置为1920×1080像素，用于高清导出。</div>
+        </div>
+
+        <div class="item">
+            <div class="word-row">
+                <span class="word">prototype</span>
+                <span class="phonetic">/ˈprəʊtətaɪp/</span>
+                <span class="cn-mean">n. 原型</span>
+                <button class="audio-btn" onclick="speak('prototype')">{>}</button>
+            </div>
+            <div class="en-sent">
+                Interactive prototypes simulate real user experiences.
+                <button class="audio-btn" onclick="speak('Interactive prototypes simulate real user experiences.')">{>}</button>
+            </div>
+            <div class="cn-sent">交互式原型模拟真实用户体验。</div>
+        </div>
+
+        <div class="item">
+            <div class="word-row">
+                <span class="word">mockup</span>
+                <span class="phonetic">/ˈmɒkʌp/</span>
+                <span class="cn-mean">n. 模型、样机</span>
+                <button class="audio-btn" onclick="speak('mockup')">{>}</button>
+            </div>
+            <div class="en-sent">
+                Create a high-fidelity mockup to showcase the final design.
+                <button class="audio-btn" onclick="speak('Create a high-fidelity mockup to showcase the final design.')">{>}</button>
+            </div>
+            <div class="cn-sent">创建高保真模型展示最终设计。</div>
+        </div>
+
+        <div class="item">
+            <div class="word-row">
+                <span class="word">navigation</span>
+                <span class="phonetic">/ˌnævɪˈɡeɪʃn/</span>
+                <span class="cn-mean">n. 导航</span>
+                <button class="audio-btn" onclick="speak('navigation')">{>}</button>
+            </div>
+            <div class="en-sent">
+                Clear navigation helps users find content efficiently.
+                <button class="audio-btn" onclick="speak('Clear navigation helps users find content efficiently.')">{>}</button>
+            </div>
+            <div class="cn-sent">清晰的导航帮助用户高效找到内容。</div>
+        </div>
+
+        <div class="item">
+            <div class="word-row">
+                <span class="word">button</span>
+                <span class="phonetic">/ˈbʌtn/</span>
+                <span class="cn-mean">n. 按钮</span>
+                <button class="audio-btn" onclick="speak('button')">{>}</button>
+            </div>
+            <div class="en-sent">
+                Design clickable buttons with clear visual feedback.
+                <button class="audio-btn" onclick="speak('Design clickable buttons with clear visual feedback.')">{>}</button>
+            </div>
+            <div class="cn-sent">设计带有清晰视觉反馈的可点击按钮。</div>
+        </div>
+
+        <div class="item">
+            <div class="word-row">
+                <span class="word">menu</span>
+                <span class="phonetic">/ˈmenjuː/</span>
+                <span class="cn-mean">n. 菜单</span>
+                <button class="audio-btn" onclick="speak('menu')">{>}</button>
+            </div>
+            <div class="en-sent">
+                Dropdown menus save space while organizing options.
+                <button class="audio-btn" onclick="speak('Dropdown menus save space while organizing options.')">{>}</button>
+            </div>
+            <div class="cn-sent">下拉菜单在组织选项的同时节省空间。</div>
+        </div>
+
+        <div class="item">
+            <div class="word-row">
+                <span class="word">form</span>
+                <span class="phonetic">/fɔːm/</span>
+                <span class="cn-mean">n. 表单</span>
+                <button class="audio-btn" onclick="speak('form')">{>}</button>
+            </div>
+            <div class="en-sent">
+                Simplify form fields to reduce user input effort.
+                <button class="audio-btn" onclick="speak('Simplify form fields to reduce user input effort.')">{>}</button>
+            </div>
+            <div class="cn-sent">简化表单字段以减少用户输入负担。</div>
+        </div>
+
+        <div class="item">
+            <div class="word-row">
+                <span class="word">tooltip</span>
+                <span class="phonetic">/ˈtuːltɪp/</span>
+                <span class="cn-mean">n. 提示框</span>
+                <button class="audio-btn" onclick="speak('tooltip')">{>}</button>
+            </div>
+            <div class="en-sent">
+                Tooltips provide additional information on hover.
+                <button class="audio-btn" onclick="speak('Tooltips provide additional information on hover.')">{>}</button>
+            </div>
+            <div class="cn-sent">提示框在悬停时提供额外信息。</div>
+        </div>
+
+        <div class="item">
+            <div class="word-row">
+                <span class="word">notification</span>
+                <span class="phonetic">/ˌnəʊtɪfɪˈkeɪʃn/</span>
+                <span class="cn-mean">n. 通知</span>
+                <button class="audio-btn" onclick="speak('notification')">{>}</button>
+            </div>
+            <div class="en-sent">
+                Push notifications keep users informed of updates.
+                <button class="audio-btn" onclick="speak('Push notifications keep users informed of updates.')">{>}</button>
+            </div>
+            <div class="cn-sent">推送通知让用户了解更新信息。</div>
+        </div>
+
+        <div class="item">
+            <div class="word-row">
+                <span class="word">tab</span>
+                <span class="phonetic">/tæb/</span>
+                <span class="cn-mean">n. 标签页</span>
+                <button class="audio-btn" onclick="speak('tab')">{>}</button>
+            </div>
+            <div class="en-sent">
+                Tabs organize content into manageable sections.
+                <button class="audio-btn" onclick="speak('Tabs organize content into manageable sections.')">{>}</button>
+            </div>
+            <div class="cn-sent">标签页将内容组织成可管理的部分。</div>
+        </div>
+
+        <div class="item">
+            <div class="word-row">
+                <span class="word">breadcrumbs</span>
+                <span class="phonetic">/ˈbredkrʌmz/</span>
+                <span class="cn-mean">n. 面包屑导航</span>
+                <button class="audio-btn" onclick="speak('breadcrumbs')">{>}</button>
+            </div>
+            <div class="en-sent">
+                Breadcrumbs show users their current location in the app.
+                <button class="audio-btn" onclick="speak('Breadcrumbs show users their current location in the app.')">{>}</button>
+            </div>
+            <div class="cn-sent">面包屑导航显示用户在应用中的当前位置。</div>
+        </div>
+
+        <div class="item">
+            <div class="word-row">
+                <span class="word">modal</span>
+                <span class="phonetic">/ˈməʊdl/</span>
+                <span class="cn-mean">n. 模态框</span>
+                <button class="audio-btn" onclick="speak('modal')">{>}</button>
+            </div>
+            <div class="en-sent">
+                Modal dialogs focus user attention on important actions.
+                <button class="audio-btn" onclick="speak('Modal dialogs focus user attention on important actions.')">{>}</button>
+            </div>
+            <div class="cn-sent">模态框将用户注意力集中在重要操作上。</div>
+        </div>
+
+        <div class="item">
+            <div class="word-row">
+                <span class="word">carousel</span>
+                <span class="phonetic">/ˈkærəˌsel/</span>
+                <span class="cn-mean">n. 轮播图</span>
+                <button class="audio-btn" onclick="speak('carousel')">{>}</button>
+            </div>
+            <div class="en-sent">
+                Image carousels showcase multiple visuals in one space.
+                <button class="audio-btn" onclick="speak('Image carousels showcase multiple visuals in one space.')">{>}</button>
+            </div>
+            <div class="cn-sent">图片轮播在同一空间展示多个视觉内容。</div>
+        </div>
+    </div>
+
+    <!-- DAY3 动态图形MG动画 -->
+    <div class="day-wrap">
+        <div class="day-title">Day3 动态图形MG动画类</div>
+
+        <div class="item">
+            <div class="word-row">
+                <span class="word">keyframe</span>
+                <span class="phonetic">/ˈkiːfreɪm/</span>
+                <span class="cn-mean">n. 关键帧</span>
+                <button class="audio-btn" onclick="speak('keyframe')">{>}</button>
+            </div>
+            <div class="en-sent">
+                Add keyframes on the timeline to control object position changes.
+                <button class="audio-btn" onclick="speak('Add keyframes on the timeline to control object position changes.')">{>}</button>
+            </div>
+            <div class="cn-sent">在时间轴添加关键帧，控制物体位置变化。</div>
+        </div>
+
+        <div class="item">
+            <div class="word-row">
+                <span class="word">timeline</span>
+                <span class="phonetic">/ˈtaɪmlaɪn/</span>
+                <span class="cn-mean">n. 时间轴</span>
+                <button class="audio-btn" onclick="speak('timeline')">{>}</button>
+            </div>
+            <div class="en-sent">
+                Arrange all clips and animations on the timeline in order.
+                <button class="audio-btn" onclick="speak('Arrange all clips and animations on the timeline in order.')">{>}</button>
+            </div>
+            <div class="cn-sent">将所有片段和动画有序排列在时间轴上。</div>
+        </div>
+
+        <div class="item">
+            <div class="word-row">
+                <span class="word">easing</span>
+                <span class="phonetic">/ˈiːzɪŋ/</span>
+                <span class="cn-mean">n. 缓动曲线</span>
+                <button class="audio-btn" onclick="speak('easing')">{>}</button>
+            </div>
+            <div class="en-sent">
+                Adjust easing curves to make the animation look more natural.
+                <button class="audio-btn" onclick="speak('Adjust easing curves to make the animation look more natural.')">{>}</button>
+            </div>
+            <div class="cn-sent">调整缓动曲线，让动画更加自然流畅。</div>
+        </div>
+
+        <div class="item">
+            <div class="word-row">
+                <span class="word">transition</span>
+                <span class="phonetic">/trænˈzɪʃn/</span>
+                <span class="cn-mean">n. 转场</span>
+                <button class="audio-btn" onclick="speak('transition')">{>}</button>
+            </div>
+            <div class="en-sent">
+                A smooth transition connects two different scene clips.
+                <button class="audio-btn" onclick="speak('A smooth transition connects two different scene clips.')">{>}</button>
+            </div>
+            <div class="cn-sent">顺滑的转场衔接两个不同画面片段。</div>
+        </div>
+
+        <div class="item">
+            <div class="word-row">
+                <span class="word">frame</span>
+                <span class="phonetic">/freɪm/</span>
+                <span class="cn-mean">n. 帧</span>
+                <button class="audio-btn" onclick="speak('frame')">{>}</button>
+            </div>
+            <div class="en-sent">
+                We set 60 frames per second for smooth motion graphics.
+                <button class="audio-btn" onclick="speak('We set 60 frames per second for smooth motion graphics.')">{>}</button>
+            </div>
+            <div class="cn-sent">我们设置每秒60帧，保证动态画面流畅。</div>
+        </div>
+
+        <div class="item">
+            <div class="word-row">
+                <span class="word">loop</span>
+                <span class="phonetic">/luːp/</span>
+                <span class="cn-mean">n. 循环</span>
+                <button class="audio-btn" onclick="speak('loop')">{>}</button>
+            </div>
+            <div class="en-sent">
+                Export a loop animation for webpage background decoration.
+                <button class="audio-btn" onclick="speak('Export a loop animation for webpage background decoration.')">{>}</button>
+            </div>
+            <div class="cn-sent">导出循环动画，用作网页背景装饰。</div>
+        </div>
+
+        <div class="item">
+            <div class="word-row">
+                <span class="word">layer</span>
+                <span class="phonetic">/ˈleɪə/</span>
+                <span class="cn-mean">n. 图层</span>
+                <button class="audio-btn" onclick="speak('layer')">{>}</button>
+            </div>
+            <div class="en-sent">
+                Classify different elements into independent layers for easy editing.
+                <button class="audio-btn" onclick="speak('Classify different elements into independent layers for easy editing.')">{>}</button>
+            </div>
+            <div class="cn-sent">将不同元素分层管理，方便后期编辑。</div>
+        </div>
+
+        <div class="item">
+            <div class="word-row">
+                <span class="word">mask</span>
+                <span class="phonetic">/mɑːsk/</span>
+                <span class="cn-mean">n. 蒙版</span>
+                <button class="audio-btn" onclick="speak('mask')">{>}</button>
+            </div>
+            <div class="en-sent">
+                Use a mask to limit the display range of video footage.
+                <button class="audio-btn" onclick="speak('Use a mask to limit the display range of video footage.')">{>}</button>
+            </div>
+            <div class="cn-sent">使用蒙版限制视频画面的显示范围。</div>
+        </div>
+
+        <div class="item">
+            <div class="word-row">
+                <span class="word">animation</span>
+                <span class="phonetic">/ˌænɪˈmeɪʃn/</span>
+                <span class="cn-mean">n. 动画</span>
+                <button class="audio-btn" onclick="speak('animation')">{>}</button>
+            </div>
+            <div class="en-sent">
+                Smooth animation enhances user engagement with the interface.
+                <button class="audio-btn" onclick="speak('Smooth animation enhances user engagement with the interface.')">{>}</button>
+            </div>
+            <div class="cn-sent">流畅的动画增强用户与界面的互动。</div>
+        </div>
+
+        <div class="item">
+            <div class="word-row">
+                <span class="word">motion</span>
+                <span class="phonetic">/ˈməʊʃn/</span>
+                <span class="cn-mean">n. 运动、动态</span>
+                <button class="audio-btn" onclick="speak('motion')">{>}</button>
+            </div>
+            <div class="en-sent">
+                Motion graphics combine design and animation for visual storytelling.
+                <button class="audio-btn" onclick="speak('Motion graphics combine design and animation for visual storytelling.')">{>}</button>
+            </div>
+            <div class="cn-sent">动态图形结合设计与动画进行视觉叙事。</div>
+        </div>
+
+        <div class="item">
+            <div class="word-row">
+                <span class="word">speed</span>
+                <span class="phonetic">/spiːd/</span>
+                <span class="cn-mean">n. 速度</span>
+                <button class="audio-btn" onclick="speak('speed')">{>}</button>
+            </div>
+            <div class="en-sent">
+                Adjust animation speed to match the mood of the scene.
+                <button class="audio-btn" onclick="speak('Adjust animation speed to match the mood of the scene.')">{>}</button>
+            </div>
+            <div class="cn-sent">调整动画速度以匹配场景氛围。</div>
+        </div>
+
+        <div class="item">
+            <div class="word-row">
+                <span class="word">duration</span>
+                <span class="phonetic">/djuˈreɪʃn/</span>
+                <span class="cn-mean">n. 时长</span>
+                <button class="audio-btn" onclick="speak('duration')">{>}</button>
+            </div>
+            <div class="en-sent">
+                Set the animation duration to control how long it plays.
+                <button class="audio-btn" onclick="speak('Set the animation duration to control how long it plays.')">{>}</button>
+            </div>
+            <div class="cn-sent">设置动画时长以控制播放时间。</div>
+        </div>
+
+        <div class="item">
+            <div class="word-row">
+                <span class="word">interpolation</span>
+                <span class="phonetic">/ɪnˌtɜːpəˈleɪʃn/</span>
+                <span class="cn-mean">n. 插值</span>
+                <button class="audio-btn" onclick="speak('interpolation')">{>}</button>
+            </div>
+            <div class="en-sent">
+                Linear interpolation creates smooth transitions between keyframes.
+                <button class="audio-btn" onclick="speak('Linear interpolation creates smooth transitions between keyframes.')">{>}</button>
+            </div>
+            <div class="cn-sent">线性插值在关键帧之间创建平滑过渡。</div>
+        </div>
+
+        <div class="item">
+            <div class="word-row">
+                <span class="word">path</span>
+                <span class="phonetic">/pɑːθ/</span>
+                <span class="cn-mean">n. 路径</span>
+                <button class="audio-btn" onclick="speak('path')">{>}</button>
+            </div>
+            <div class="en-sent">
+                Animate objects along custom paths for complex movements.
+                <button class="audio-btn" onclick="speak('Animate objects along custom paths for complex movements.')">{>}</button>
+            </div>
+            <div class="cn-sent">沿自定义路径动画对象实现复杂运动。</div>
+        </div>
+
+        <div class="item">
+            <div class="word-row">
+                <span class="word">rotation</span>
+                <span class="phonetic">/rəʊˈteɪʃn/</span>
+                <span class="cn-mean">n. 旋转</span>
+                <button class="audio-btn" onclick="speak('rotation')">{>}</button>
+            </div>
+            <div class="en-sent">
+                Add rotation animation to make elements more dynamic.
+                <button class="audio-btn" onclick="speak('Add rotation animation to make elements more dynamic.')">{>}</button>
+            </div>
+            <div class="cn-sent">添加旋转动画让元素更加动态。</div>
+        </div>
+
+        <div class="item">
+            <div class="word-row">
+                <span class="word">scale</span>
+                <span class="phonetic">/skeɪl/</span>
+                <span class="cn-mean">n./v. 缩放</span>
+                <button class="audio-btn" onclick="speak('scale')">{>}</button>
+            </div>
+            <div class="en-sent">
+                Scale animations create entrance and exit effects.
+                <button class="audio-btn" onclick="speak('Scale animations create entrance and exit effects.')">{>}</button>
+            </div>
+            <div class="cn-sent">缩放动画创建进入和退出效果。</div>
+        </div>
+
+        <div class="item">
+            <div class="word-row">
+                <span class="word">opacity</span>
+                <span class="phonetic">/əʊˈpæsəti/</span>
+                <span class="cn-mean">n. 透明度</span>
+                <button class="audio-btn" onclick="speak('opacity')">{>}</button>
+            </div>
+            <div class="en-sent">
+                Fade effects use opacity changes over time.
+                <button class="audio-btn" onclick="speak('Fade effects use opacity changes over time.')">{>}</button>
+            </div>
+            <div class="cn-sent">淡入淡出效果通过透明度随时间变化实现。</div>
+        </div>
+
+        <div class="item">
+            <div class="word-row">
+                <span class="word">keyframes</span>
+                <span class="phonetic">/ˈkiːfreɪmz/</span>
+                <span class="cn-mean">n. 关键帧（复数）</span>
+                <button class="audio-btn" onclick="speak('keyframes')">{>}</button>
+            </div>
+            <div class="en-sent">
+                Multiple keyframes create complex animation sequences.
+                <button class="audio-btn" onclick="speak('Multiple keyframes create complex animation sequences.')">{>}</button>
+            </div>
+            <div class="cn-sent">多个关键帧创建复杂的动画序列。</div>
+        </div>
+
+        <div class="item">
+            <div class="word-row">
+                <span class="word">interactive</span>
+                <span class="phonetic">/ˌɪntərˈæktɪv/</span>
+                <span class="cn-mean">adj. 交互式的</span>
+                <button class="audio-btn" onclick="speak('interactive')">{>}</button>
+            </div>
+            <div class="en-sent">
+                Interactive animations respond to user input in real-time.
+                <button class="audio-btn" onclick="speak('Interactive animations respond to user input in real-time.')">{>}</button>
+            </div>
+            <div class="cn-sent">交互式动画实时响应用户输入。</div>
+        </div>
+
+        <div class="item">
+            <div class="word-row">
+                <span class="word">kinetic</span>
+                <span class="phonetic">/kɪˈnetɪk/</span>
+                <span class="cn-mean">adj. 动态的、运动的</span>
+                <button class="audio-btn" onclick="speak('kinetic')">{>}</button>
+            </div>
+            <div class="en-sent">
+                Kinetic typography brings text to life with motion.
+                <button class="audio-btn" onclick="speak('Kinetic typography brings text to life with motion.')">{>}</button>
+            </div>
+            <div class="cn-sent">动态排版通过运动让文字焕发生机。</div>
+        </div>
+    </div>
+
+    <!-- DAY4 渲染合成影视后期 -->
+    <div class="day-wrap">
+        <div class="day-title">Day4 渲染、合成与影视后期类</div>
+
+        <div class="item">
+            <div class="word-row">
+                <span class="word">render</span>
+                <span class="phonetic">/ˈrendə/</span>
+                <span class="cn-mean">v./n. 渲染</span>
+                <button class="audio-btn" onclick="speak('render')">{>}</button>
+            </div>
+            <div class="en-sent">
+                It takes ten minutes to render the final high-resolution video file.
+                <button class="audio-btn" onclick="speak('It takes ten minutes to render the final high-resolution video file.')">{>}</button>
+            </div>
+            <div class="cn-sent">渲染高清成片大约需要十分钟。</div>
+        </div>
+
+        <div class="item">
+            <div class="word-row">
+                <span class="word">composite</span>
+                <span class="phonetic">/ˈkɒmpəzɪt/</span>
+                <span class="cn-mean">v. 合成</span>
+                <button class="audio-btn" onclick="speak('composite')">{>}</button>
+            </div>
+            <div class="en-sent">
+                We composite real footage with dynamic graphic elements in AE.
+                <button class="audio-btn" onclick="speak('We composite real footage with dynamic graphic elements in AE.')">{>}</button>
+            </div>
+            <div class="cn-sent">我们在AE中将实拍素材与动态图形元素合成。</div>
+        </div>
+
+        <div class="item">
+            <div class="word-row">
+                <span class="word">footage</span>
+                <span class="phonetic">/ˈfʊtɪdʒ/</span>
+                <span class="cn-mean">n. 影片素材</span>
+                <button class="audio-btn" onclick="speak('footage')">{>}</button>
+            </div>
+            <div class="en-sent">
+                Cut useless footage before starting color correction.
+                <button class="audio-btn" onclick="speak('Cut useless footage before starting color correction.')">{>}</button>
+            </div>
+            <div class="cn-sent">调色前先剪掉无效素材片段。</div>
+        </div>
+
+        <div class="item">
+            <div class="word-row">
+                <span class="word">VFX</span>
+                <span class="phonetic">/ˌviː ef ˈeks/</span>
+                <span class="cn-mean">n. 视觉特效</span>
+                <button class="audio-btn" onclick="speak('VFX')">{>}</button>
+            </div>
+            <div class="en-sent">
+                The glowing particle effect belongs to simple VFX production.
+                <button class="audio-btn" onclick="speak('The glowing particle effect belongs to simple VFX production.')">{>}</button>
+            </div>
+            <div class="cn-sent">发光粒子效果属于基础视觉特效制作。</div>
+        </div>
+
+        <div class="item">
+            <div class="word-row">
+                <span class="word">export</span>
+                <span class="phonetic">/ɪkˈspɔːt/</span>
+                <span class="cn-mean">v. 导出</span>
+                <button class="audio-btn" onclick="speak('export')">{>}</button>
+            </div>
+            <div class="en-sent">
+                Export the project as MP4 format for portfolio submission.
+                <button class="audio-btn" onclick="speak('Export the project as MP4 format for portfolio submission.')">{>}</button>
+            </div>
+            <div class="cn-sent">导出MP4文件，用于作品集提交。</div>
+        </div>
+
+        <div class="item">
+            <div class="word-row">
+                <span class="word">resolution</span>
+                <span class="phonetic">/ˌrezəˈluːʃn/</span>
+                <span class="cn-mean">n. 分辨率</span>
+                <button class="audio-btn" onclick="speak('resolution')">{>}</button>
+            </div>
+            <div class="en-sent">
+                3840×2160 is standard 4K resolution for display works.
+                <button class="audio-btn" onclick="speak('3840×2160 is standard 4K resolution for display works.')">{>}</button>
+            </div>
+            <div class="cn-sent">3840×2160是作品展示的标准4K分辨率。</div>
+        </div>
+
+        <div class="item">
+            <div class="word-row">
+                <span class="word">codec</span>
+                <span class="phonetic">/ˈkəʊdek/</span>
+                <span class="cn-mean">n. 编码格式</span>
+                <button class="audio-btn" onclick="speak('codec')">{>}</button>
+            </div>
+            <div class="en-sent">
+                Choose the H.264 codec for wide compatibility on most devices.
+                <button class="audio-btn" onclick="speak('Choose the H.264 codec for wide compatibility on most devices.')">{>}</button>
+            </div>
+            <div class="cn-sent">选择H.264编码，适配绝大多数设备。</div>
+        </div>
+
+        <div class="item">
+            <div class="word-row">
+                <span class="word">color grading</span>
+                <span class="phonetic">/ˈkʌlə ˈɡreɪdɪŋ/</span>
+                <span class="cn-mean">n. 调色</span>
+                <button class="audio-btn" onclick="speak('color grading')">{>}</button>
+            </div>
+            <div class="en-sent">
+                Color grading sets the emotional tone of the video.
+                <button class="audio-btn" onclick="speak('Color grading sets the emotional tone of the video.')">{>}</button>
+            </div>
+            <div class="cn-sent">调色设定视频的情感基调。</div>
+        </div>
+
+        <div class="item">
+            <div class="word-row">
+                <span class="word">compositing</span>
+                <span class="phonetic">/kəmˈpɒzɪtɪŋ/</span>
+                <span class="cn-mean">n. 合成</span>
+                <button class="audio-btn" onclick="speak('compositing')">{>}</button>
+            </div>
+            <div class="en-sent">
+                Compositing merges multiple visual elements into one scene.
+                <button class="audio-btn" onclick="speak('Compositing merges multiple visual elements into one scene.')">{>}</button>
+            </div>
+            <div class="cn-sent">合成将多个视觉元素合并到一个场景中。</div>
+        </div>
+
+        <div class="item">
+            <div class="word-row">
+                <span class="word">green screen</span>
+                <span class="phonetic">/ɡriːn skriːn/</span>
+                <span class="cn-mean">n. 绿幕</span>
+                <button class="audio-btn" onclick="speak('green screen')">{>}</button>
+            </div>
+            <div class="en-sent">
+                Shoot on green screen for flexible background replacement.
+                <button class="audio-btn" onclick="speak('Shoot on green screen for flexible background replacement.')">{>}</button>
+            </div>
+            <div class="cn-sent">在绿幕前拍摄以便灵活替换背景。</div>
+        </div>
+
+        <div class="item">
+            <div class="word-row">
+                <span class="word">chroma key</span>
+                <span class="phonetic">/ˈkrəʊmə kiː/</span>
+                <span class="cn-mean">n. 色度键控</span>
+                <button class="audio-btn" onclick="speak('chroma key')">{>}</button>
+            </div>
+            <div class="en-sent">
+                Chroma key removes the green screen background digitally.
+                <button class="audio-btn" onclick="speak('Chroma key removes the green screen background digitally.')">{>}</button>
+            </div>
+            <div class="cn-sent">色度键控通过数字方式移除绿幕背景。</div>
+        </div>
+
+        <div class="item">
+            <div class="word-row">
+                <span class="word">tracking</span>
+                <span class="phonetic">/ˈtrækɪŋ/</span>
+                <span class="cn-mean">n. 跟踪</span>
+                <button class="audio-btn" onclick="speak('tracking')">{>}</button>
+            </div>
+            <div class="en-sent">
+                Motion tracking follows object movement across frames.
+                <button class="audio-btn" onclick="speak('Motion tracking follows object movement across frames.')">{>}</button>
+            </div>
+            <div class="cn-sent">运动跟踪在帧之间追踪物体移动。</div>
+        </div>
+
+        <div class="item">
+            <div class="word-row">
+                <span class="word">roto</span>
+                <span class="phonetic">/ˈrəʊtəʊ/</span>
+                <span class="cn-mean">n. 抠像</span>
+                <button class="audio-btn" onclick="speak('roto')">{>}</button>
+            </div>
+            <div class="en-sent">
+                Rotoscoping manually separates foreground from background.
+                <button class="audio-btn" onclick="speak('Rotoscoping manually separates foreground from background.')">{>}</button>
+            </div>
+            <div class="cn-sent">逐帧抠像手动分离前景和背景。</div>
+        </div>
+
+        <div class="item">
+            <div class="word-row">
+                <span class="word">matte</span>
+                <span class="phonetic">/mæt/</span>
+                <span class="cn-mean">n. 遮罩</span>
+                <button class="audio-btn" onclick="speak('matte')">{>}</button>
+            </div>
+            <div class="en-sent">
+                Use a matte to define transparent areas in footage.
+                <button class="audio-btn" onclick="speak('Use a matte to define transparent areas in footage.')">{>}</button>
+            </div>
+            <div class="cn-sent">使用遮罩定义素材中的透明区域。</div>
+        </div>
+
+        <div class="item">
+            <div class="word-row">
+                <span class="word">grain</span>
+                <span class="phonetic">/ɡreɪn/</span>
+                <span class="cn-mean">n. 颗粒感</span>
+                <button class="audio-btn" onclick="speak('grain')">{>}</button>
+            </div>
+            <div class="en-sent">
+                Add film grain for a cinematic look.
+                <button class="audio-btn" onclick="speak('Add film grain for a cinematic look.')">{>}</button>
+            </div>
+            <div class="cn-sent">添加胶片颗粒感营造电影质感。</div>
+        </div>
+
+        <div class="item">
+            <div class="word-row">
+                <span class="word">lens flare</span>
+                <span class="phonetic">/lenz fleə/</span>
+                <span class="cn-mean">n. 镜头光晕</span>
+                <button class="audio-btn" onclick="speak('lens flare')">{>}</button>
+            </div>
+            <div class="en-sent">
+                Lens flare adds realism to outdoor scenes.
+                <button class="audio-btn" onclick="speak('Lens flare adds realism to outdoor scenes.')">{>}</button>
+            </div>
+            <div class="cn-sent">镜头光晕为户外场景增添真实感。</div>
+        </div>
+
+        <div class="item">
+            <div class="word-row">
+                <span class="word">depth of field</span>
+                <span class="phonetic">/depθ ɒv fiːld/</span>
+                <span class="cn-mean">n. 景深</span>
+                <button class="audio-btn" onclick="speak('depth of field')">{>}</button>
+            </div>
+            <div class="en-sent">
+                Shallow depth of field focuses on the subject.
+                <button class="audio-btn" onclick="speak('Shallow depth of field focuses on the subject.')">{>}</button>
+            </div>
+            <div class="cn-sent">浅景深将焦点集中在主体上。</div>
+        </div>
+
+        <div class="item">
+            <div class="word-row">
+                <span class="word">match cut</span>
+                <span class="phonetic">/mætʃ kʌt/</span>
+                <span class="cn-mean">n. 匹配剪辑</span>
+                <button class="audio-btn" onclick="speak('match cut')">{>}</button>
+            </div>
+            <div class="en-sent">
+                Match cuts create smooth visual transitions.
+                <button class="audio-btn" onclick="speak('Match cuts create smooth visual transitions.')">{>}</button>
+            </div>
+            <div class="cn-sent">匹配剪辑创建平滑的视觉过渡。</div>
+        </div>
+
+        <div class="item">
+            <div class="word-row">
+                <span class="word">slow motion</span>
+                <span class="phonetic">/sləʊ ˈməʊʃn/</span>
+                <span class="cn-mean">n. 慢动作</span>
+                <button class="audio-btn" onclick="speak('slow motion')">{>}</button>
+            </div>
+            <div class="en-sent">
+                Slow motion emphasizes important moments.
+                <button class="audio-btn" onclick="speak('Slow motion emphasizes important moments.')">{>}</button>
+            </div>
+            <div class="cn-sent">慢动作强调重要时刻。</div>
+        </div>
+
+        <div class="item">
+            <div class="word-row">
+                <span class="word">time remapping</span>
+                <span class="phonetic">/taɪm ˈriːmæpɪŋ/</span>
+                <span class="cn-mean">n. 时间重映射</span>
+                <button class="audio-btn" onclick="speak('time remapping')">{>}</button>
+            </div>
+            <div class="en-sent">
+                Time remapping changes speed at different points in footage.
+                <button class="audio-btn" onclick="speak('Time remapping changes speed at different points in footage.')">{>}</button>
+            </div>
+            <div class="cn-sent">时间重映射在素材不同点改变速度。</div>
+        </div>
+    </div>
+
+    <!-- DAY5 色彩材质质感 -->
+    <div class="day-wrap">
+        <div class="day-title">Day5 色彩、材质与视觉质感类</div>
+
+        <div class="item">
+            <div class="word-row">
+                <span class="word">palette</span>
+                <span class="phonetic">/ˈpælət/</span>
+                <span class="cn-mean">n. 调色板</span>
+                <button class="audio-btn" onclick="speak('palette')">{>}</button>
+            </div>
+            <div class="en-sent">
+                Build a unified color palette for the whole series of design works.
+                <button class="audio-btn" onclick="speak('Build a unified color palette for the whole series of design works.')">{>}</button>
+            </div>
+            <div class="cn-sent">为整套系列作品建立统一的调色规范。</div>
+        </div>
+
+        <div class="item">
+            <div class="word-row">
+                <span class="word">gradient</span>
+                <span class="phonetic">/ˈɡreɪdiənt/</span>
+                <span class="cn-mean">n. 渐变</span>
+                <button class="audio-btn" onclick="speak('gradient')">{>}</button>
+            </div>
+            <div class="en-sent">
+                Soft gradient backgrounds are popular in modern concept UI design.
+                <button class="audio-btn" onclick="speak('Soft gradient backgrounds are popular in modern concept UI design.')">{>}</button>
+            </div>
+            <div class="cn-sent">柔和渐变背景非常流行于现代概念UI设计。</div>
+        </div>
+
+        <div class="item">
+            <div class="word-row">
+                <span class="word">texture</span>
+                <span class="phonetic">/ˈtekstʃə/</span>
+                <span class="cn-mean">n. 纹理、材质</span>
+                <button class="audio-btn" onclick="speak('texture')">{>}</button>
+            </div>
+            <div class="en-sent">
+                Overlay paper texture to increase the tactile sense of static images.
+                <button class="audio-btn" onclick="speak('Overlay paper texture to increase the tactile sense of static images.')">{>}</button>
+            </div>
+            <div class="cn-sent">叠加纸张纹理，提升静态图的触感质感。</div>
+        </div>
+
+        <div class="item">
+            <div class="word-row">
+                <span class="word">saturation</span>
+                <span class="phonetic">/ˌsætʃəˈreɪʃn/</span>
+                <span class="cn-mean">n. 饱和度</span>
+                <button class="audio-btn" onclick="speak('saturation')">{>}</button>
+            </div>
+            <div class="en-sent">
+                Lower saturation to create a calm and cold tone style.
+                <button class="audio-btn" onclick="speak('Lower saturation to create a calm and cold tone style.')">{>}</button>
+            </div>
+            <div class="cn-sent">降低饱和度，打造冷静高级冷色调风格。</div>
+        </div>
+
+        <div class="item">
+            <div class="word-row">
+                <span class="word">hue</span>
+                <span class="phonetic">/hjuː/</span>
+                <span class="cn-mean">n. 色相</span>
+                <button class="audio-btn" onclick="speak('hue')">{>}</button>
+            </div>
+            <div class="en-sent">
+                Adjust the hue to match the overall theme of the project.
+                <button class="audio-btn" onclick="speak('Adjust the hue to match the overall theme of the project.')">{>}</button>
+            </div>
+            <div class="cn-sent">调整色相，匹配项目整体主题氛围。</div>
+        </div>
+
+        <div class="item">
+            <div class="word-row">
+                <span class="word">shadow</span>
+                <span class="phonetic">/ˈʃædəʊ/</span>
+                <span class="cn-mean">n. 阴影</span>
+                <button class="audio-btn" onclick="speak('shadow')">{>}</button>
+            </div>
+            <div class="en-sent">
+                Soft shadow enhances the layering of floating cards.
+                <button class="audio-btn" onclick="speak('Soft shadow enhances the layering of floating cards.')">{>}</button>
+            </div>
+            <div class="cn-sent">柔和阴影增强悬浮卡片的层次感。</div>
+        </div>
+
+        <div class="item">
+            <div class="word-row">
+                <span class="word">glow</span>
+                <span class="phonetic">/ɡləʊ/</span>
+                <span class="cn-mean">n. 发光效果</span>
+                <button class="audio-btn" onclick="speak('glow')">{>}</button>
+            </div>
+            <div class="en-sent">
+                Add subtle glow to highlight core interactive buttons.
+                <button class="audio-btn" onclick="speak('Add subtle glow to highlight core interactive buttons.')">{>}</button>
+            </div>
+            <div class="cn-sent">添加微弱发光，突出核心交互按钮。</div>
+        </div>
+
+        <div class="item">
+            <div class="word-row">
+                <span class="word">tone</span>
+                <span class="phonetic">/təʊn/</span>
+                <span class="cn-mean">n. 色调</span>
+                <button class="audio-btn" onclick="speak('tone')">{>}</button>
+            </div>
+            <div class="en-sent">
+                Warm tones create a cozy and inviting atmosphere.
+                <button class="audio-btn" onclick="speak('Warm tones create a cozy and inviting atmosphere.')">{>}</button>
+            </div>
+            <div class="cn-sent">暖色调营造舒适温馨的氛围。</div>
+        </div>
+
+        <div class="item">
+            <div class="word-row">
+                <span class="word">value</span>
+                <span class="phonetic">/ˈvæljuː/</span>
+                <span class="cn-mean">n. 明度</span>
+                <button class="audio-btn" onclick="speak('value')">{>}</button>
+            </div>
+            <div class="en-sent">
+                Contrast in value creates visual depth.
+                <button class="audio-btn" onclick="speak('Contrast in value creates visual depth.')">{>}</button>
+            </div>
+            <div class="cn-sent">明度对比创造视觉深度。</div>
+        </div>
+
+        <div class="item">
+            <div class="word-row">
+                <span class="word">chroma</span>
+                <span class="phonetic">/ˈkrəʊmə/</span>
+                <span class="cn-mean">n. 色度</span>
+                <button class="audio-btn" onclick="speak('chroma')">{>}</button>
+            </div>
+            <div class="en-sent">
+                High chroma colors are vibrant and intense.
+                <button class="audio-btn" onclick="speak('High chroma colors are vibrant and intense.')">{>}</button>
+            </div>
+            <div class="cn-sent">高色度颜色鲜艳浓烈。</div>
+        </div>
+
+        <div class="item">
+            <div class="word-row">
+                <span class="word">complementary</span>
+                <span class="phonetic">/ˌkɒmplɪˈmentri/</span>
+                <span class="cn-mean">adj. 互补的</span>
+                <button class="audio-btn" onclick="speak('complementary')">{>}</button>
+            </div>
+            <div class="en-sent">
+                Complementary colors create strong visual contrast.
+                <button class="audio-btn" onclick="speak('Complementary colors create strong visual contrast.')">{>}</button>
+            </div>
+            <div class="cn-sent">互补色产生强烈的视觉对比。</div>
+        </div>
+
+        <div class="item">
+            <div class="word-row">
+                <span class="word">analogous</span>
+                <span class="phonetic">/əˈnæləɡəs/</span>
+                <span class="cn-mean">adj. 类似的</span>
+                <button class="audio-btn" onclick="speak('analogous')">{>}</button>
+            </div>
+            <div class="en-sent">
+                Analogous colors create harmonious color schemes.
+                <button class="audio-btn" onclick="speak('Analogous colors create harmonious color schemes.')">{>}</button>
+            </div>
+            <div class="cn-sent">类似色创造和谐的配色方案。</div>
+        </div>
+
+        <div class="item">
+            <div class="word-row">
+                <span class="word">monochromatic</span>
+                <span class="phonetic">/ˌmɒnəkrəˈmætɪk/</span>
+                <span class="cn-mean">adj. 单色的</span>
+                <button class="audio-btn" onclick="speak('monochromatic')">{>}</button>
+            </div>
+            <div class="en-sent">
+                Monochromatic palettes use variations of a single color.
+                <button class="audio-btn" onclick="speak('Monochromatic palettes use variations of a single color.')">{>}</button>
+            </div>
+            <div class="cn-sent">单色调色板使用单一颜色的变体。</div>
+        </div>
+
+        <div class="item">
+            <div class="word-row">
+                <span class="word">opacity</span>
+                <span class="phonetic">/əʊˈpæsəti/</span>
+                <span class="cn-mean">n. 透明度</span>
+                <button class="audio-btn" onclick="speak('opacity')">{>}</button>
+            </div>
+            <div class="en-sent">
+                Adjust opacity to create layered visual effects.
+                <button class="audio-btn" onclick="speak('Adjust opacity to create layered visual effects.')">{>}</button>
+            </div>
+            <div class="cn-sent">调整透明度以创建分层视觉效果。</div>
+        </div>
+
+        <div class="item">
+            <div class="word-row">
+                <span class="word">reflectance</span>
+                <span class="phonetic">/rɪˈflektəns/</span>
+                <span class="cn-mean">n. 反射率</span>
+                <button class="audio-btn" onclick="speak('reflectance')">{>}</button>
+            </div>
+            <div class="en-sent">
+                High reflectance surfaces appear shiny.
+                <button class="audio-btn" onclick="speak('High reflectance surfaces appear shiny.')">{>}</button>
+            </div>
+            <div class="cn-sent">高反射率表面看起来有光泽。</div>
+        </div>
+
+        <div class="item">
+            <div class="word-row">
+                <span class="word">specular</span>
+                <span class="phonetic">/ˈspekjʊlə/</span>
+                <span class="cn-mean">adj. 镜面的</span>
+                <button class="audio-btn" onclick="speak('specular')">{>}</button>
+            </div>
+            <div class="en-sent">
+                Specular highlights show reflective qualities.
+                <button class="audio-btn" onclick="speak('Specular highlights show reflective qualities.')">{>}</button>
+            </div>
+            <div class="cn-sent">镜面高光显示反射特性。</div>
+        </div>
+
+        <div class="item">
+            <div class="word-row">
+                <span class="word">diffuse</span>
+                <span class="phonetic">/dɪˈfjuːs/</span>
+                <span class="cn-mean">adj. 漫反射的</span>
+                <button class="audio-btn" onclick="speak('diffuse')">{>}</button>
+            </div>
+            <div class="en-sent">
+                Diffuse lighting creates soft shadows.
+                <button class="audio-btn" onclick="speak('Diffuse lighting creates soft shadows.')">{>}</button>
+            </div>
+            <div class="cn-sent">漫反射光照产生柔和阴影。</div>
+        </div>
+
+        <div class="item">
+            <div class="word-row">
+                <span class="word">ambient</span>
+                <span class="phonetic">/ˈæmbiənt/</span>
+                <span class="cn-mean">adj. 环境的</span>
+                <button class="audio-btn" onclick="speak('ambient')">{>}</button>
+            </div>
+            <div class="en-sent">
+                Ambient light sets the overall brightness of a scene.
+                <button class="audio-btn" onclick="speak('Ambient light sets the overall brightness of a scene.')">{>}</button>
+            </div>
+            <div class="cn-sent">环境光设定场景的整体亮度。</div>
+        </div>
+
+        <div class="item">
+            <div class="word-row">
+                <span class="word">specularity</span>
+                <span class="phonetic">/ˌspekjʊˈlærəti/</span>
+                <span class="cn-mean">n. 镜面度</span>
+                <button class="audio-btn" onclick="speak('specularity')">{>}</button>
+            </div>
+            <div class="en-sent">
+                Lower specularity for matte surfaces.
+                <button class="audio-btn" onclick="speak('Lower specularity for matte surfaces.')">{>}</button>
+            </div>
+            <div class="cn-sent">降低镜面度用于哑光表面。</div>
+        </div>
+
+        <div class="item">
+            <div class="word-row">
+                <span class="word">roughness</span>
+                <span class="phonetic">/ˈrʌfnəs/</span>
+                <span class="cn-mean">n. 粗糙度</span>
+                <button class="audio-btn" onclick="speak('roughness')">{>}</button>
+            </div>
+            <div class="en-sent">
+                Higher roughness creates a more textured appearance.
+                <button class="audio-btn" onclick="speak('Higher roughness creates a more textured appearance.')">{>}</button>
+            </div>
+            <div class="cn-sent">较高的粗糙度创造更有质感的外观。</div>
+        </div>
+    </div>
+
+    <!-- DAY6 AIGC生成设计 -->
+    <div class="day-wrap">
+        <div class="day-title">Day6 AIGC生成设计专业类</div>
+
+        <div class="item">
+            <div class="word-row">
+                <span class="word">prompt</span>
+                <span class="phonetic">/prɒmpt/</span>
+                <span class="cn-mean">n. 提示词</span>
+                <button class="audio-btn" onclick="speak('prompt')">{>}</button>
+            </div>
+            <div class="en-sent">
+                Precise prompts help AI generate ideal concept product renderings.
+                <button class="audio-btn" onclick="speak('Precise prompts help AI generate ideal concept product renderings.')">{>}</button>
+            </div>
+            <div class="cn-sent">精准的提示词能让AI生成理想的概念产品渲染图。</div>
+        </div>
+
+        <div class="item">
+            <div class="word-row">
+                <span class="word">generate</span>
+                <span class="phonetic">/ˈdʒenəreɪt/</span>
+                <span class="cn-mean">v. 生成</span>
+                <button class="audio-btn" onclick="speak('generate')">{>}</button>
+            </div>
+            <div class="en-sent">
+                This model can generate short dynamic videos from static pictures.
+                <button class="audio-btn" onclick="speak('This model can generate short dynamic videos from static pictures.')">{>}</button>
+            </div>
+            <div class="cn-sent">该模型可以将静态图片生成动态短视频。</div>
+        </div>
+
+        <div class="item">
+            <div class="word-row">
+                <span class="word">texture generation</span>
+                <span class="phonetic">/ˈtekstʃə ˌdʒenəˈreɪʃn/</span>
+                <span class="cn-mean">n. 纹理生成</span>
+                <button class="audio-btn" onclick="speak('texture generation')">{>}</button>
+            </div>
+            <div class="en-sent">
+                AI texture generation greatly improves the efficiency of concept design.
+                <button class="audio-btn" onclick="speak('AI texture generation greatly improves the efficiency of concept design.')">{>}</button>
+            </div>
+            <div class="cn-sent">AI纹理生成极大提升了概念设计效率。</div>
+        </div>
+
+        <div class="item">
+            <div class="word-row">
+                <span class="word">upscale</span>
+                <span class="phonetic">/ˌʌpˈskeɪl/</span>
+                <span class="cn-mean">v. 高清放大</span>
+                <button class="audio-btn" onclick="speak('upscale')">{>}</button>
+            </div>
+            <div class="en-sent">
+                Upscale the AI image to 4K for portfolio printing.
+                <button class="audio-btn" onclick="speak('Upscale the AI image to 4K for portfolio printing.')">{>}</button>
+            </div>
+            <div class="cn-sent">将AI图像放大至4K，用于作品集打印输出。</div>
+        </div>
+
+        <div class="item">
+            <div class="word-row">
+                <span class="word">deformation</span>
+                <span class="phonetic">/ˌdiːfɔːˈmeɪʃn/</span>
+                <span class="cn-mean">n. 形变</span>
+                <button class="audio-btn" onclick="speak('deformation')">{>}</button>
+            </div>
+            <div class="en-sent">
+                Real-time deformation effects can be made with Canvas and AI assistance.
+                <button class="audio-btn" onclick="speak('Real-time deformation effects can be made with Canvas and AI assistance.')">{>}</button>
+            </div>
+            <div class="cn-sent">结合画布与AI辅助，可以制作实时形变效果。</div>
+        </div>
+
+        <div class="item">
+            <div class="word-row">
+                <span class="word">iteration</span>
+                <span class="phonetic">/ˌɪtəˈreɪʃn/</span>
+                <span class="cn-mean">n. 迭代</span>
+                <button class="audio-btn" onclick="speak('iteration')">{>}</button>
+            </div>
+            <div class="en-sent">
+                We complete multiple rounds of iteration based on AI generated drafts.
+                <button class="audio-btn" onclick="speak('We complete multiple rounds of iteration based on AI generated drafts.')">{>}</button>
+            </div>
+            <div class="cn-sent">我们基于AI初稿完成多轮设计迭代。</div>
+        </div>
+
+        <div class="item">
+            <div class="word-row">
+                <span class="word">seed</span>
+                <span class="phonetic">/siːd/</span>
+                <span class="cn-mean">n. 随机种子</span>
+                <button class="audio-btn" onclick="speak('seed')">{>}</button>
+            </div>
+            <div class="en-sent">
+                Fix the seed number to keep the image style consistent every generation.
+                <button class="audio-btn" onclick="speak('Fix the seed number to keep the image style consistent every generation.')">{>}</button>
+            </div>
+            <div class="cn-sent">固定种子数值，保证每次生成风格统一。</div>
+        </div>
+
+        <div class="item">
+            <div class="word-row">
+                <span class="word">generative</span>
+                <span class="phonetic">/ˈdʒenərətɪv/</span>
+                <span class="cn-mean">adj. 生成式的</span>
+                <button class="audio-btn" onclick="speak('generative')">{>}</button>
+            </div>
+            <div class="en-sent">
+                Generative AI creates original content from prompts.
+                <button class="audio-btn" onclick="speak('Generative AI creates original content from prompts.')">{>}</button>
+            </div>
+            <div class="cn-sent">生成式AI根据提示词创建原创内容。</div>
+        </div>
+
+        <div class="item">
+            <div class="word-row">
+                <span class="word">diffusion</span>
+                <span class="phonetic">/dɪˈfjuːʒn/</span>
+                <span class="cn-mean">n. 扩散</span>
+                <button class="audio-btn" onclick="speak('diffusion')">{>}</button>
+            </div>
+            <div class="en-sent">
+                Diffusion models generate images from random noise.
+                <button class="audio-btn" onclick="speak('Diffusion models generate images from random noise.')">{>}</button>
+            </div>
+            <div class="cn-sent">扩散模型从随机噪声生成图像。</div>
+        </div>
+
+        <div class="item">
+            <div class="word-row">
+                <span class="word">latent</span>
+                <span class="phonetic">/ˈleɪtənt/</span>
+                <span class="cn-mean">adj. 潜在的</span>
+                <button class="audio-btn" onclick="speak('latent')">{>}</button>
+            </div>
+            <div class="en-sent">
+                Latent space represents compressed visual information.
+                <button class="audio-btn" onclick="speak('Latent space represents compressed visual information.')">{>}</button>
+            </div>
+            <div class="cn-sent">潜在空间代表压缩的视觉信息。</div>
+        </div>
+
+        <div class="item">
+            <div class="word-row">
+                <span class="word">prompt engineering</span>
+                <span class="phonetic">/prɒmpt ˌendʒɪˈnɪərɪŋ/</span>
+                <span class="cn-mean">n. 提示词工程</span>
+                <button class="audio-btn" onclick="speak('prompt engineering')">{>}</button>
+            </div>
+            <div class="en-sent">
+                Prompt engineering improves AI output quality.
+                <button class="audio-btn" onclick="speak('Prompt engineering improves AI output quality.')">{>}</button>
+            </div>
+            <div class="cn-sent">提示词工程提升AI输出质量。</div>
+        </div>
+
+        <div class="item">
+            <div class="word-row">
+                <span class="word">fine-tune</span>
+                <span class="phonetic">/faɪn tjuːn/</span>
+                <span class="cn-mean">v. 微调</span>
+                <button class="audio-btn" onclick="speak('fine-tune')">{>}</button>
+            </div>
+            <div class="en-sent">
+                Fine-tune models on specific datasets for better results.
+                <button class="audio-btn" onclick="speak('Fine-tune models on specific datasets for better results.')">{>}</button>
+            </div>
+            <div class="cn-sent">在特定数据集上微调模型以获得更好结果。</div>
+        </div>
+
+        <div class="item">
+            <div class="word-row">
+                <span class="word">inference</span>
+                <span class="phonetic">/ˈɪnfərəns/</span>
+                <span class="cn-mean">n. 推理</span>
+                <button class="audio-btn" onclick="speak('inference')">{>}</button>
+            </div>
+            <div class="en-sent">
+                Model inference generates outputs from inputs.
+                <button class="audio-btn" onclick="speak('Model inference generates outputs from inputs.')">{>}</button>
+            </div>
+            <div class="cn-sent">模型推理从输入生成输出。</div>
+        </div>
+
+        <div class="item">
+            <div class="word-row">
+                <span class="word">embedding</span>
+                <span class="phonetic">/ɪmˈbedɪŋ/</span>
+                <span class="cn-mean">n. 嵌入</span>
+                <button class="audio-btn" onclick="speak('embedding')">{>}</button>
+            </div>
+            <div class="en-sent">
+                Text embeddings convert words into numerical vectors.
+                <button class="audio-btn" onclick="speak('Text embeddings convert words into numerical vectors.')">{>}</button>
+            </div>
+            <div class="cn-sent">文本嵌入将单词转换为数值向量。</div>
+        </div>
+
+        <div class="item">
+            <div class="word-row">
+                <span class="word">clip</span>
+                <span class="phonetic">/klɪp/</span>
+                <span class="cn-mean">n. CLIP模型</span>
+                <button class="audio-btn" onclick="speak('clip')">{>}</button>
+            </div>
+            <div class="en-sent">
+                CLIP connects images and text semantically.
+                <button class="audio-btn" onclick="speak('CLIP connects images and text semantically.')">{>}</button>
+            </div>
+            <div class="cn-sent">CLIP模型语义连接图像和文本。</div>
+        </div>
+
+        <div class="item">
+            <div class="word-row">
+                <span class="word">sampling</span>
+                <span class="phonetic">/ˈsɑːmplɪŋ/</span>
+                <span class="cn-mean">n. 采样</span>
+                <button class="audio-btn" onclick="speak('sampling')">{>}</button>
+            </div>
+            <div class="en-sent">
+                Sampling determines image generation quality and speed.
+                <button class="audio-btn" onclick="speak('Sampling determines image generation quality and speed.')">{>}</button>
+            </div>
+            <div class="cn-sent">采样决定图像生成质量和速度。</div>
+        </div>
+
+        <div class="item">
+            <div class="word-row">
+                <span class="word">denoising</span>
+                <span class="phonetic">/diːˈnɔɪzɪŋ/</span>
+                <span class="cn-mean">n. 去噪</span>
+                <button class="audio-btn" onclick="speak('denoising')">{>}</button>
+            </div>
+            <div class="en-sent">
+                Denoising gradually removes noise from images.
+                <button class="audio-btn" onclick="speak('Denoising gradually removes noise from images.')">{>}</button>
+            </div>
+            <div class="cn-sent">去噪逐步从图像中移除噪声。</div>
+        </div>
+
+        <div class="item">
+            <div class="word-row">
+                <span class="word">control net</span>
+                <span class="phonetic">/kənˈtrəʊl net/</span>
+                <span class="cn-mean">n. 控制网络</span>
+                <button class="audio-btn" onclick="speak('control net')">{>}</button>
+            </div>
+            <div class="en-sent">
+                Control Net guides AI generation with additional conditions.
+                <button class="audio-btn" onclick="speak('Control Net guides AI generation with additional conditions.')">{>}</button>
+            </div>
+            <div class="cn-sent">控制网络通过附加条件引导AI生成。</div>
+        </div>
+
+        <div class="item">
+            <div class="word-row">
+                <span class="word">upscaling</span>
+                <span class="phonetic">/ʌpˈskeɪlɪŋ/</span>
+                <span class="cn-mean">n. 放大</span>
+                <button class="audio-btn" onclick="speak('upscaling')">{>}</button>
+            </div>
+            <div class="en-sent">
+                AI upscaling increases image resolution without losing quality.
+                <button class="audio-btn" onclick="speak('AI upscaling increases image resolution without losing quality.')">{>}</button>
+            </div>
+            <div class="cn-sent">AI放大在不损失质量的情况下提高图像分辨率。</div>
+        </div>
+
+        <div class="item">
+            <div class="word-row">
+                <span class="word">style transfer</span>
+                <span class="phonetic">/staɪl trænsˈfɜː/</span>
+                <span class="cn-mean">n. 风格迁移</span>
+                <button class="audio-btn" onclick="speak('style transfer')">{>}</button>
+            </div>
+            <div class="en-sent">
+                Style transfer applies artistic styles to images.
+                <button class="audio-btn" onclick="speak('Style transfer applies artistic styles to images.')">{>}</button>
+            </div>
+            <div class="cn-sent">风格迁移将艺术风格应用到图像上。</div>
+        </div>
+    </div>
+
+    <!-- DAY7 前端代码动态开发 -->
+    <div class="day-wrap">
+        <div class="day-title">Day7 前端&代码动态开发类</div>
+
+        <div class="item">
+            <div class="word-row">
+                <span class="word">canvas</span>
+                <span class="phonetic">/ˈkænvəs/</span>
+                <span class="cn-mean">n. 画布</span>
+                <button class="audio-btn" onclick="speak('canvas')">{>}</button>
+            </div>
+            <div class="en-sent">
+                We draw particle animations directly on the HTML Canvas element.
+                <button class="audio-btn" onclick="speak('We draw particle animations directly on the HTML Canvas element.')">{>}</button>
+            </div>
+            <div class="cn-sent">我们在HTML画布上直接绘制粒子动画。</div>
+        </div>
+
+        <div class="item">
+            <div class="word-row">
+                <span class="word">script</span>
+                <span class="phonetic">/skrɪpt/</span>
+                <span class="cn-mean">n. 脚本</span>
+                <button class="audio-btn" onclick="speak('script')">{>}</button>
+            </div>
+            <div class="en-sent">
+                Run a JS script to control automatic frame animation playback.
+                <button class="audio-btn" onclick="speak('Run a JS script to control automatic frame animation playback.')">{>}</button>
+            </div>
+            <div class="cn-sent">运行JS脚本，控制帧动画自动播放。</div>
+        </div>
+
+        <div class="item">
+            <div class="word-row">
+                <span class="word">coordinate</span>
+                <span class="phonetic">/kəʊˈɔːdɪnət/</span>
+                <span class="cn-mean">n. 坐标</span>
+                <button class="audio-btn" onclick="speak('coordinate')">{>}</button>
+            </div>
+            <div class="en-sent">
+                Use X and Y coordinates to locate elements on the canvas.
+                <button class="audio-btn" onclick="speak('Use X and Y coordinates to locate elements on the canvas.')">{>}</button>
+            </div>
+            <div class="cn-sent">使用XY坐标定位画布元素。</div>
+        </div>
+
+        <div class="item">
+            <div class="word-row">
+                <span class="word">parameter</span>
+                <span class="phonetic">/pəˈræmɪtə/</span>
+                <span class="cn-mean">n. 参数</span>
+                <button class="audio-btn" onclick="speak('parameter')">{>}</button>
+            </div>
+            <div class="en-sent">
+                Tweak animation parameters to change speed and amplitude.
+                <button class="audio-btn" onclick="speak('Tweak animation parameters to change speed and amplitude.')">{>}</button>
+            </div>
+            <div class="cn-sent">调整动画参数，改变速度与幅度。</div>
+        </div>
+
+        <div class="item">
+            <div class="word-row">
+                <span class="word">real-time</span>
+                <span class="phonetic">/ˌriːəl ˈtaɪm/</span>
+                <span class="cn-mean">adj. 实时的</span>
+                <button class="audio-btn" onclick="speak('real-time')">{>}</button>
+            </div>
+            <div class="en-sent">
+                MediaPipe supports real-time landmark detection on camera input.
+                <button class="audio-btn" onclick="speak('MediaPipe supports real-time landmark detection on camera input.')">{>}</button>
+            </div>
+            <div class="cn-sent">MediaPipe支持摄像头实时关键点检测。</div>
+        </div>
+
+        <div class="item">
+            <div class="word-row">
+                <span class="word">algorithm</span>
+                <span class="phonetic">/ˈælgərɪðəm/</span>
+                <span class="cn-mean">n. 算法</span>
+                <button class="audio-btn" onclick="speak('algorithm')">{>}</button>
+            </div>
+            <div class="en-sent">
+                The floating wave effect is calculated by sine wave algorithm.
+                <button class="audio-btn" onclick="speak('The floating wave effect is calculated by sine wave algorithm.')">{>}</button>
+            </div>
+            <div class="cn-sent">浮动波浪效果由正弦波算法计算生成。</div>
+        </div>
+
+        <div class="item">
+            <div class="word-row">
+                <span class="word">HTML</span>
+                <span class="phonetic">/ˌeɪtʃ tiː em ˈel/</span>
+                <span class="cn-mean">n. 超文本标记语言</span>
+                <button class="audio-btn" onclick="speak('HTML')">{>}</button>
+            </div>
+            <div class="en-sent">
+                HTML structures the content of web pages.
+                <button class="audio-btn" onclick="speak('HTML structures the content of web pages.')">{>}</button>
+            </div>
+            <div class="cn-sent">HTML构建网页内容结构。</div>
+        </div>
+
+        <div class="item">
+            <div class="word-row">
+                <span class="word">CSS</span>
+                <span class="phonetic">/ˌsiː es ˈes/</span>
+                <span class="cn-mean">n. 层叠样式表</span>
+                <button class="audio-btn" onclick="speak('CSS')">{>}</button>
+            </div>
+            <div class="en-sent">
+                CSS styles and layouts web page elements.
+                <button class="audio-btn" onclick="speak('CSS styles and layouts web page elements.')">{>}</button>
+            </div>
+            <div class="cn-sent">CSS样式化并布局网页元素。</div>
+        </div>
+
+        <div class="item">
+            <div class="word-row">
+                <span class="word">JavaScript</span>
+                <span class="phonetic">/ˈdʒɑːvəskrɪpt/</span>
+                <span class="cn-mean">n. JavaScript语言</span>
+                <button class="audio-btn" onclick="speak('JavaScript')">{>}</button>
+            </div>
+            <div class="en-sent">
+                JavaScript adds interactivity to web pages.
+                <button class="audio-btn" onclick="speak('JavaScript adds interactivity to web pages.')">{>}</button>
+            </div>
+            <div class="cn-sent">JavaScript为网页添加交互性。</div>
+        </div>
+
+        <div class="item">
+            <div class="word-row">
+                <span class="word">framework</span>
+                <span class="phonetic">/ˈfreɪmwɜːk/</span>
+                <span class="cn-mean">n. 框架</span>
+                <button class="audio-btn" onclick="speak('framework')">{>}</button>
+            </div>
+            <div class="en-sent">
+                Use frameworks like React for efficient development.
+                <button class="audio-btn" onclick="speak('Use frameworks like React for efficient development.')">{>}</button>
+            </div>
+            <div class="cn-sent">使用React等框架进行高效开发。</div>
+        </div>
+
+        <div class="item">
+            <div class="word-row">
+                <span class="word">library</span>
+                <span class="phonetic">/ˈlaɪbrəri/</span>
+                <span class="cn-mean">n. 库</span>
+                <button class="audio-btn" onclick="speak('library')">{>}</button>
+            </div>
+            <div class="en-sent">
+                Libraries provide pre-built functions for common tasks.
+                <button class="audio-btn" onclick="speak('Libraries provide pre-built functions for common tasks.')">{>}</button>
+            </div>
+            <div class="cn-sent">库提供预构建的函数用于常见任务。</div>
+        </div>
+
+        <div class="item">
+            <div class="word-row">
+                <span class="word">API</span>
+                <span class="phonetic">/ˌeɪ piː ˈaɪ/</span>
+                <span class="cn-mean">n. 应用程序接口</span>
+                <button class="audio-btn" onclick="speak('API')">{>}</button>
+            </div>
+            <div class="en-sent">
+                APIs enable communication between software applications.
+                <button class="audio-btn" onclick="speak('APIs enable communication between software applications.')">{>}</button>
+            </div>
+            <div class="cn-sent">API实现软件应用之间的通信。</div>
+        </div>
+
+        <div class="item">
+            <div class="word-row">
+                <span class="word">function</span>
+                <span class="phonetic">/ˈfʌŋkʃn/</span>
+                <span class="cn-mean">n. 函数</span>
+                <button class="audio-btn" onclick="speak('function')">{>}</button>
+            </div>
+            <div class="en-sent">
+                Functions encapsulate reusable code blocks.
+                <button class="audio-btn" onclick="speak('Functions encapsulate reusable code blocks.')">{>}</button>
+            </div>
+            <div class="cn-sent">函数封装可重用的代码块。</div>
+        </div>
+
+        <div class="item">
+            <div class="word-row">
+                <span class="word">variable</span>
+                <span class="phonetic">/ˈveəriəbl/</span>
+                <span class="cn-mean">n. 变量</span>
+                <button class="audio-btn" onclick="speak('variable')">{>}</button>
+            </div>
+            <div class="en-sent">
+                Variables store data values in programming.
+                <button class="audio-btn" onclick="speak('Variables store data values in programming.')">{>}</button>
+            </div>
+            <div class="cn-sent">变量在编程中存储数据值。</div>
+        </div>
+
+        <div class="item">
+            <div class="word-row">
+                <span class="word">loop</span>
+                <span class="phonetic">/luːp/</span>
+                <span class="cn-mean">n. 循环</span>
+                <button class="audio-btn" onclick="speak('loop')">{>}</button>
+            </div>
+            <div class="en-sent">
+                Loops repeat code blocks multiple times.
+                <button class="audio-btn" onclick="speak('Loops repeat code blocks multiple times.')">{>}</button>
+            </div>
+            <div class="cn-sent">循环多次重复代码块。</div>
+        </div>
+
+        <div class="item">
+            <div class="word-row">
+                <span class="word">condition</span>
+                <span class="phonetic">/kənˈdɪʃn/</span>
+                <span class="cn-mean">n. 条件</span>
+                <button class="audio-btn" onclick="speak('condition')">{>}</button>
+            </div>
+            <div class="en-sent">
+                Conditional statements execute code based on logic.
+                <button class="audio-btn" onclick="speak('Conditional statements execute code based on logic.')">{>}</button>
+            </div>
+            <div class="cn-sent">条件语句根据逻辑执行代码。</div>
+        </div>
+
+        <div class="item">
+            <div class="word-row">
+                <span class="word">event</span>
+                <span class="phonetic">/ɪˈvent/</span>
+                <span class="cn-mean">n. 事件</span>
+                <button class="audio-btn" onclick="speak('event')">{>}</button>
+            </div>
+            <div class="en-sent">
+                Events trigger actions in response to user interactions.
+                <button class="audio-btn" onclick="speak('Events trigger actions in response to user interactions.')">{>}</button>
+            </div>
+            <div class="cn-sent">事件响应用户交互触发动作。</div>
+        </div>
+
+        <div class="item">
+            <div class="word-row">
+                <span class="word">DOM</span>
+                <span class="phonetic">/dɒm/</span>
+                <span class="cn-mean">n. 文档对象模型</span>
+                <button class="audio-btn" onclick="speak('DOM')">{>}</button>
+            </div>
+            <div class="en-sent">
+                DOM represents the structure of HTML documents.
+                <button class="audio-btn" onclick="speak('DOM represents the structure of HTML documents.')">{>}</button>
+            </div>
+            <div class="cn-sent">DOM表示HTML文档的结构。</div>
+        </div>
+
+        <div class="item">
+            <div class="word-row">
+                <span class="word">responsive</span>
+                <span class="phonetic">/rɪˈspɒnsɪv/</span>
+                <span class="cn-mean">adj. 响应式的</span>
+                <button class="audio-btn" onclick="speak('responsive')">{>}</button>
+            </div>
+            <div class="en-sent">
+                Responsive design adapts to different screen sizes.
+                <button class="audio-btn" onclick="speak('Responsive design adapts to different screen sizes.')">{>}</button>
+            </div>
+            <div class="cn-sent">响应式设计适配不同屏幕尺寸。</div>
+        </div>
+
+        <div class="item">
+            <div class="word-row">
+                <span class="word">performance</span>
+                <span class="phonetic">/pəˈfɔːməns/</span>
+                <span class="cn-mean">n. 性能</span>
+                <button class="audio-btn" onclick="speak('performance')">{>}</button>
+            </div>
+            <div class="en-sent">
+                Optimize performance for smooth user experiences.
+                <button class="audio-btn" onclick="speak('Optimize performance for smooth user experiences.')">{>}</button>
+            </div>
+            <div class="cn-sent">优化性能以获得流畅的用户体验。</div>
+        </div>
+    </div>
+
+    <!-- DAY8 作品集项目流程 -->
+    <div class="day-wrap">
+        <div class="day-title">Day8 作品集项目流程类</div>
+
+        <div class="item">
+            <div class="word-row">
+                <span class="word">research</span>
+                <span class="phonetic">/rɪˈsɜːtʃ/</span>
+                <span class="cn-mean">n. 调研</span>
+                <button class="audio-btn" onclick="speak('research')">{>}</button>
+            </div>
+            <div class="en-sent">
+                Market research is the foundation of my design project.
+                <button class="audio-btn" onclick="speak('Market research is the foundation of my design project.')">{>}</button>
+            </div>
+            <div class="cn-sent">市场调研是本次设计项目的基础。</div>
+        </div>
+
+        <div class="item">
+            <div class="word-row">
+                <span class="word">concept</span>
+                <span class="phonetic">/ˈkɒnsept/</span>
+                <span class="cn-mean">n. 创作概念</span>
+                <button class="audio-btn" onclick="speak('concept')">{>}</button>
+            </div>
+            <div class="en-sent">
+                The core concept of this work is the integration of digital and reality.
+                <button class="audio-btn" onclick="speak('The core concept of this work is the integration of digital and reality.')">{>}</button>
+            </div>
+            <div class="cn-sent">作品核心概念是数字与现实的融合。</div>
+        </div>
+
+        <div class="item">
+            <div class="word-row">
+                <span class="word">motivation</span>
+                <span class="phonetic">/ˌməʊtɪˈveɪʃn/</span>
+                <span class="cn-mean">n. 创作动机</span>
+                <button class="audio-btn" onclick="speak('motivation')">{>}</button>
+            </div>
+            <div class="en-sent">
+                My design motivation comes from daily digital life observation.
+                <button class="audio-btn" onclick="speak('My design motivation comes from daily digital life observation.')">{>}</button>
+            </div>
+            <div class="cn-sent">我的创作动机来源于对日常数字生活的观察。</div>
+        </div>
+
+        <div class="item">
+            <div class="word-row">
+                <span class="word">sketch</span>
+                <span class="phonetic">/sketʃ/</span>
+                <span class="cn-mean">n. 草图</span>
+                <button class="audio-btn" onclick="speak('sketch')">{>}</button>
+            </div>
+            <div class="en-sent">
+                I draw many hand sketches to sort out early ideas.
+                <button class="audio-btn" onclick="speak('I draw many hand sketches to sort out early ideas.')">{>}</button>
+            </div>
+            <div class="cn-sent">我绘制大量草图，梳理初期创意。</div>
+        </div>
+
+        <div class="item">
+            <div class="word-row">
+                <span class="word">revision</span>
+                <span class="phonetic">/rɪˈvɪʒn/</span>
+                <span class="cn-mean">n. 修改、改版</span>
+                <button class="audio-btn" onclick="speak('revision')">{>}</button>
+            </div>
+            <div class="en-sent">
+                Do final revision according to tutor’s feedback.
+                <button class="audio-btn" onclick="speak('Do final revision according to tutor’s feedback.')">{>}</button>
+            </div>
+            <div class="cn-sent">根据导师反馈完成最终修改。</div>
+        </div>
+
+        <div class="item">
+            <div class="word-row">
+                <span class="word">showcase</span>
+                <span class="phonetic">/ˈʃəʊkeɪs/</span>
+                <span class="cn-mean">n. 作品展示</span>
+                <button class="audio-btn" onclick="speak('showcase')">{>}</button>
+            </div>
+            <div class="en-sent">
+                Arrange works logically for portfolio showcase.
+                <button class="audio-btn" onclick="speak('Arrange works logically for portfolio showcase.')">{>}</button>
+            </div>
+            <div class="cn-sent">合理排布作品，完成作品集展示。</div>
+        </div>
+
+        <div class="item">
+            <div class="word-row">
+                <span class="word">brief</span>
+                <span class="phonetic">/briːf/</span>
+                <span class="cn-mean">n. 设计简报</span>
+                <button class="audio-btn" onclick="speak('brief')">{>}</button>
+            </div>
+            <div class="en-sent">
+                The brief outlines project requirements and goals.
+                <button class="audio-btn" onclick="speak('The brief outlines project requirements and goals.')">{>}</button>
+            </div>
+            <div class="cn-sent">设计简报概述项目要求和目标。</div>
+        </div>
+
+        <div class="item">
+            <div class="word-row">
+                <span class="word">brainstorm</span>
+                <span class="phonetic">/ˈbreɪnstɔːm/</span>
+                <span class="cn-mean">v./n. 头脑风暴</span>
+                <button class="audio-btn" onclick="speak('brainstorm')">{>}</button>
+            </div>
+            <div class="en-sent">
+                Brainstorm ideas before sketching concepts.
+                <button class="audio-btn" onclick="speak('Brainstorm ideas before sketching concepts.')">{>}</button>
+            </div>
+            <div class="cn-sent">在绘制概念草图前进行头脑风暴。</div>
+        </div>
+
+        <div class="item">
+            <div class="word-row">
+                <span class="word">concept</span>
+                <span class="phonetic">/ˈkɒnsept/</span>
+                <span class="cn-mean">n. 概念</span>
+                <button class="audio-btn" onclick="speak('concept')">{>}</button>
+            </div>
+            <div class="en-sent">
+                Develop clear concepts before finalizing designs.
+                <button class="audio-btn" onclick="speak('Develop clear concepts before finalizing designs.')">{>}</button>
+            </div>
+            <div class="cn-sent">在最终确定设计前开发清晰的概念。</div>
+        </div>
+
+        <div class="item">
+            <div class="word-row">
+                <span class="word">development</span>
+                <span class="phonetic">/dɪˈveləpmənt/</span>
+                <span class="cn-mean">n. 开发</span>
+                <button class="audio-btn" onclick="speak('development')">{>}</button>
+            </div>
+            <div class="en-sent">
+                Development phase turns concepts into final products.
+                <button class="audio-btn" onclick="speak('Development phase turns concepts into final products.')">{>}</button>
+            </div>
+            <div class="cn-sent">开发阶段将概念转化为最终产品。</div>
+        </div>
+
+        <div class="item">
+            <div class="word-row">
+                <span class="word">testing</span>
+                <span class="phonetic">/ˈtestɪŋ/</span>
+                <span class="cn-mean">n. 测试</span>
+                <button class="audio-btn" onclick="speak('testing')">{>}</button>
+            </div>
+            <div class="en-sent">
+                User testing validates design effectiveness.
+                <button class="audio-btn" onclick="speak('User testing validates design effectiveness.')">{>}</button>
+            </div>
+            <div class="cn-sent">用户测试验证设计效果。</div>
+        </div>
+
+        <div class="item">
+            <div class="word-row">
+                <span class="word">deployment</span>
+                <span class="phonetic">/dɪˈplɔɪmənt/</span>
+                <span class="cn-mean">n. 部署</span>
+                <button class="audio-btn" onclick="speak('deployment')">{>}</button>
+            </div>
+            <div class="en-sent">
+                Deployment makes the project available to users.
+                <button class="audio-btn" onclick="speak('Deployment makes the project available to users.')">{>}</button>
+            </div>
+            <div class="cn-sent">部署使项目对用户可用。</div>
+        </div>
+
+        <div class="item">
+            <div class="word-row">
+                <span class="word">milestone</span>
+                <span class="phonetic">/ˈmaɪlstəʊn/</span>
+                <span class="cn-mean">n. 里程碑</span>
+                <button class="audio-btn" onclick="speak('milestone')">{>}</button>
+            </div>
+            <div class="en-sent">
+                Milestones track project progress and deadlines.
+                <button class="audio-btn" onclick="speak('Milestones track project progress and deadlines.')">{>}</button>
+            </div>
+            <div class="cn-sent">里程碑跟踪项目进度和截止日期。</div>
+        </div>
+
+        <div class="item">
+            <div class="word-row">
+                <span class="word">deadline</span>
+                <span class="phonetic">/ˈdedlaɪn/</span>
+                <span class="cn-mean">n. 截止日期</span>
+                <button class="audio-btn" onclick="speak('deadline')">{>}</button>
+            </div>
+            <div class="en-sent">
+                Meet deadlines to ensure project success.
+                <button class="audio-btn" onclick="speak('Meet deadlines to ensure project success.')">{>}</button>
+            </div>
+            <div class="cn-sent">按时完成任务确保项目成功。</div>
+        </div>
+
+        <div class="item">
+            <div class="word-row">
+                <span class="word">deliverable</span>
+                <span class="phonetic">/dɪˈlɪvərəbl/</span>
+                <span class="cn-mean">n. 交付物</span>
+                <button class="audio-btn" onclick="speak('deliverable')">{>}</button>
+            </div>
+            <div class="en-sent">
+                Define clear deliverables for each project phase.
+                <button class="audio-btn" onclick="speak('Define clear deliverables for each project phase.')">{>}</button>
+            </div>
+            <div class="cn-sent">为每个项目阶段定义清晰的交付物。</div>
+        </div>
+
+        <div class="item">
+            <div class="word-row">
+                <span class="word">iteration</span>
+                <span class="phonetic">/ˌɪtəˈreɪʃn/</span>
+                <span class="cn-mean">n. 迭代</span>
+                <button class="audio-btn" onclick="speak('iteration')">{>}</button>
+            </div>
+            <div class="en-sent">
+                Iterations improve designs based on feedback.
+                <button class="audio-btn" onclick="speak('Iterations improve designs based on feedback.')">{>}</button>
+            </div>
+            <div class="cn-sent">迭代基于反馈改进设计。</div>
+        </div>
+
+        <div class="item">
+            <div class="word-row">
+                <span class="word">prototype</span>
+                <span class="phonetic">/ˈprəʊtətaɪp/</span>
+                <span class="cn-mean">n. 原型</span>
+                <button class="audio-btn" onclick="speak('prototype')">{>}</button>
+            </div>
+            <div class="en-sent">
+                Prototypes test design concepts interactively.
+                <button class="audio-btn" onclick="speak('Prototypes test design concepts interactively.')">{>}</button>
+            </div>
+            <div class="cn-sent">原型交互式测试设计概念。</div>
+        </div>
+
+        <div class="item">
+            <div class="word-row">
+                <span class="word">wireframe</span>
+                <span class="phonetic">/ˈwaɪəfreɪm/</span>
+                <span class="cn-mean">n. 线框图</span>
+                <button class="audio-btn" onclick="speak('wireframe')">{>}</button>
+            </div>
+            <div class="en-sent">
+                Wireframes outline page structure and layout.
+                <button class="audio-btn" onclick="speak('Wireframes outline page structure and layout.')">{>}</button>
+            </div>
+            <div class="cn-sent">线框图概述页面结构和布局。</div>
+        </div>
+
+        <div class="item">
+            <div class="word-row">
+                <span class="word">mockup</span>
+                <span class="phonetic">/ˈmɒkʌp/</span>
+                <span class="cn-mean">n. 模型</span>
+                <button class="audio-btn" onclick="speak('mockup')">{>}</button>
+            </div>
+            <div class="en-sent">
+                Mockups show visual design details realistically.
+                <button class="audio-btn" onclick="speak('Mockups show visual design details realistically.')">{>}</button>
+            </div>
+            <div class="cn-sent">模型真实展示视觉设计细节。</div>
+        </div>
+
+        <div class="item">
+            <div class="word-row">
+                <span class="word">usability</span>
+                <span class="phonetic">/ˌjuːzəˈbɪləti/</span>
+                <span class="cn-mean">n. 可用性</span>
+                <button class="audio-btn" onclick="speak('usability')">{>}</button>
+            </div>
+            <div class="en-sent">
+                Usability testing ensures user-friendly designs.
+                <button class="audio-btn" onclick="speak('Usability testing ensures user-friendly designs.')">{>}</button>
+            </div>
+            <div class="cn-sent">可用性测试确保用户友好的设计。</div>
+        </div>
+    </div>
+
+    <!-- DAY9 英文答辩汇报专用 -->
+    <div class="day-wrap">
+        <div class="day-title">Day9 英文答辩&项目汇报类</div>
+
+        <div class="item">
+            <div class="word-row">
+                <span class="word">innovation</span>
+                <span class="phonetic">/ˌɪnəˈveɪʃn/</span>
+                <span class="cn-mean">n. 创新性</span>
+                <button class="audio-btn" onclick="speak('innovation')">{>}</button>
+            </div>
+            <div class="en-sent">
+                The innovation lies in combining AI generation with hand-made design.
+                <button class="audio-btn" onclick="speak('The innovation lies in combining AI generation with hand-made design.')">{>}</button>
+            </div>
+            <div class="cn-sent">创新点在于结合AI生成与手工设计。</div>
+        </div>
+
+        <div class="item">
+            <div class="word-row">
+                <span class="word">narrative</span>
+                <span class="phonetic">/ˈnærətɪv/</span>
+                <span class="cn-mean">n. 叙事</span>
+                <button class="audio-btn" onclick="speak('narrative')">{>}</button>
+            </div>
+            <div class="en-sent">
+                This video work uses visual narrative to tell a complete story.
+                <button class="audio-btn" onclick="speak('This video work uses visual narrative to tell a complete story.')">{>}</button>
+            </div>
+            <div class="cn-sent">该视频作品通过视觉叙事讲述完整故事。</div>
+        </div>
+
+        <div class="item">
+            <div class="word-row">
+                <span class="word">implement</span>
+                <span class="phonetic">/ˈɪmplɪment/</span>
+                <span class="cn-mean">v. 实现、落地</span>
+                <button class="audio-btn" onclick="speak('implement')">{>}</button>
+            </div>
+            <div class="en-sent">
+                I implement this interactive effect through front-end code development.
+                <button class="audio-btn" onclick="speak('I implement this interactive effect through front-end code development.')">{>}</button>
+            </div>
+            <div class="cn-sent">我通过前端代码开发实现该交互效果。</div>
+        </div>
+
+        <div class="item">
+            <div class="word-row">
+                <span class="word">presentation</span>
+                <span class="phonetic">/ˌpreznˈteɪʃn/</span>
+                <span class="cn-mean">n. 演示、汇报</span>
+                <button class="audio-btn" onclick="speak('presentation')">{>}</button>
+            </div>
+            <div class="en-sent">
+                Prepare a 15-minute presentation for the final defense.
+                <button class="audio-btn" onclick="speak('Prepare a 15-minute presentation for the final defense.')">{>}</button>
+            </div>
+            <div class="cn-sent">为最终答辩准备15分钟的汇报演示。</div>
+        </div>
+
+        <div class="item">
+            <div class="word-row">
+                <span class="word">feedback</span>
+                <span class="phonetic">/ˈfiːdbæk/</span>
+                <span class="cn-mean">n. 反馈</span>
+                <button class="audio-btn" onclick="speak('feedback')">{>}</button>
+            </div>
+            <div class="en-sent">
+                Collect feedback from advisors to improve the project.
+                <button class="audio-btn" onclick="speak('Collect feedback from advisors to improve the project.')">{>}</button>
+            </div>
+            <div class="cn-sent">收集导师反馈以改进项目。</div>
+        </div>
+
+        <div class="item">
+            <div class="word-row">
+                <span class="word">Q&A</span>
+                <span class="phonetic">/ˌkjuː ənd ˈeɪ/</span>
+                <span class="cn-mean">n. 问答环节</span>
+                <button class="audio-btn" onclick="speak('Q&A')">{>}</button>
+            </div>
+            <div class="en-sent">
+                Practice the Q&A session to answer questions confidently.
+                <button class="audio-btn" onclick="speak('Practice the Q&A session to answer questions confidently.')">{>}</button>
+            </div>
+            <div class="cn-sent">练习问答环节，自信地回答问题。</div>
+        </div>
+
+        <div class="item">
+            <div class="word-row">
+                <span class="word">critique</span>
+                <span class="phonetic">/krɪˈtiːk/</span>
+                <span class="cn-mean">n. 批评、评论</span>
+                <button class="audio-btn" onclick="speak('critique')">{>}</button>
+            </div>
+            <div class="en-sent">
+                Accept constructive critique to refine your work.
+                <button class="audio-btn" onclick="speak('Accept constructive critique to refine your work.')">{>}</button>
+            </div>
+            <div class="cn-sent">接受建设性批评以完善作品。</div>
+        </div>
+
+        <div class="item">
+            <div class="word-row">
+                <span class="word">defense</span>
+                <span class="phonetic">/dɪˈfens/</span>
+                <span class="cn-mean">n. 答辩</span>
+                <button class="audio-btn" onclick="speak('defense')">{>}</button>
+            </div>
+            <div class="en-sent">
+                The thesis defense evaluates your research and practice.
+                <button class="audio-btn" onclick="speak('The thesis defense evaluates your research and practice.')">{>}</button>
+            </div>
+            <div class="cn-sent">论文答辩评估你的研究与实践成果。</div>
+        </div>
+
+        <div class="item">
+            <div class="word-row">
+                <span class="word">justify</span>
+                <span class="phonetic">/ˈdʒʌstɪfaɪ/</span>
+                <span class="cn-mean">v. 证明...正当、解释</span>
+                <button class="audio-btn" onclick="speak('justify')">{>}</button>
+            </div>
+            <div class="en-sent">
+                Justify your design decisions with research findings.
+                <button class="audio-btn" onclick="speak('Justify your design decisions with research findings.')">{>}</button>
+            </div>
+            <div class="cn-sent">用调研结果证明你的设计决策。</div>
+        </div>
+
+        <div class="item">
+            <div class="word-row">
+                <span class="word">discussion</span>
+                <span class="phonetic">/dɪˈskʌʃn/</span>
+                <span class="cn-mean">n. 讨论</span>
+                <button class="audio-btn" onclick="speak('discussion')">{>}</button>
+            </div>
+            <div class="en-sent">
+                Discussion explores project implications and future work.
+                <button class="audio-btn" onclick="speak('Discussion explores project implications and future work.')">{>}</button>
+            </div>
+            <div class="cn-sent">讨论探讨项目意义和未来工作。</div>
+        </div>
+
+        <div class="item">
+            <div class="word-row">
+                <span class="word">conclusion</span>
+                <span class="phonetic">/kənˈkluːʒn/</span>
+                <span class="cn-mean">n. 结论</span>
+                <button class="audio-btn" onclick="speak('conclusion')">{>}</button>
+            </div>
+            <div class="en-sent">
+                Conclusion summarizes key findings and achievements.
+                <button class="audio-btn" onclick="speak('Conclusion summarizes key findings and achievements.')">{>}</button>
+            </div>
+            <div class="cn-sent">结论总结关键发现和成就。</div>
+        </div>
+
+        <div class="item">
+            <div class="word-row">
+                <span class="word">introduction</span>
+                <span class="phonetic">/ˌɪntrəˈdʌkʃn/</span>
+                <span class="cn-mean">n. 引言</span>
+                <button class="audio-btn" onclick="speak('introduction')">{>}</button>
+            </div>
+            <div class="en-sent">
+                Introduction sets the context and objectives of the project.
+                <button class="audio-btn" onclick="speak('Introduction sets the context and objectives of the project.')">{>}</button>
+            </div>
+            <div class="cn-sent">引言设定项目背景和目标。</div>
+        </div>
+
+        <div class="item">
+            <div class="word-row">
+                <span class="word">methodology</span>
+                <span class="phonetic">/ˌmeθəˈdɒlədʒi/</span>
+                <span class="cn-mean">n. 方法论</span>
+                <button class="audio-btn" onclick="speak('methodology')">{>}</button>
+            </div>
+            <div class="en-sent">
+                Methodology describes the approach used in the project.
+                <button class="audio-btn" onclick="speak('Methodology describes the approach used in the project.')">{>}</button>
+            </div>
+            <div class="cn-sent">方法论描述项目使用的方法。</div>
+        </div>
+
+        <div class="item">
+            <div class="word-row">
+                <span class="word">analysis</span>
+                <span class="phonetic">/əˈnæləsɪs/</span>
+                <span class="cn-mean">n. 分析</span>
+                <button class="audio-btn" onclick="speak('analysis')">{>}</button>
+            </div>
+            <div class="en-sent">
+                Analysis interprets data and findings systematically.
+                <button class="audio-btn" onclick="speak('Analysis interprets data and findings systematically.')">{>}</button>
+            </div>
+            <div class="cn-sent">分析系统地解释数据和发现。</div>
+        </div>
+
+        <div class="item">
+            <div class="word-row">
+                <span class="word">evaluation</span>
+                <span class="phonetic">/ɪˌvæljuˈeɪʃn/</span>
+                <span class="cn-mean">n. 评估</span>
+                <button class="audio-btn" onclick="speak('evaluation')">{>}</button>
+            </div>
+            <div class="en-sent">
+                Evaluation assesses project outcomes and effectiveness.
+                <button class="audio-btn" onclick="speak('Evaluation assesses project outcomes and effectiveness.')">{>}</button>
+            </div>
+            <div class="cn-sent">评估项目成果和效果。</div>
+        </div>
+
+        <div class="item">
+            <div class="word-row">
+                <span class="word">limitation</span>
+                <span class="phonetic">/ˌlɪmɪˈteɪʃn/</span>
+                <span class="cn-mean">n. 局限性</span>
+                <button class="audio-btn" onclick="speak('limitation')">{>}</button>
+            </div>
+            <div class="en-sent">
+                Acknowledge limitations and suggest improvements.
+                <button class="audio-btn" onclick="speak('Acknowledge limitations and suggest improvements.')">{>}</button>
+            </div>
+            <div class="cn-sent">承认局限性并提出改进建议。</div>
+        </div>
+
+        <div class="item">
+            <div class="word-row">
+                <span class="word">recommendation</span>
+                <span class="phonetic">/ˌrekəmenˈdeɪʃn/</span>
+                <span class="cn-mean">n. 建议</span>
+                <button class="audio-btn" onclick="speak('recommendation')">{>}</button>
+            </div>
+            <div class="en-sent">
+                Recommendations guide future development directions.
+                <button class="audio-btn" onclick="speak('Recommendations guide future development directions.')">{>}</button>
+            </div>
+            <div class="cn-sent">建议指导未来发展方向。</div>
+        </div>
+
+        <div class="item">
+            <div class="word-row">
+                <span class="word">highlight</span>
+                <span class="phonetic">/ˈhaɪlaɪt/</span>
+                <span class="cn-mean">v. 强调</span>
+                <button class="audio-btn" onclick="speak('highlight')">{>}</button>
+            </div>
+            <div class="en-sent">
+                Highlight key contributions in your presentation.
+                <button class="audio-btn" onclick="speak('Highlight key contributions in your presentation.')">{>}</button>
+            </div>
+            <div class="cn-sent">在汇报中强调关键贡献。</div>
+        </div>
+
+        <div class="item">
+            <div class="word-row">
+                <span class="word">perspective</span>
+                <span class="phonetic">/pəˈspektɪv/</span>
+                <span class="cn-mean">n. 视角</span>
+                <button class="audio-btn" onclick="speak('perspective')">{>}</button>
+            </div>
+            <div class="en-sent">
+                Present your work from different perspectives.
+                <button class="audio-btn" onclick="speak('Present your work from different perspectives.')">{>}</button>
+            </div>
+            <div class="cn-sent">从不同视角展示你的作品。</div>
+        </div>
+
+        <div class="item">
+            <div class="word-row">
+                <span class="word">summary</span>
+                <span class="phonetic">/ˈsʌməri/</span>
+                <span class="cn-mean">n. 摘要</span>
+                <button class="audio-btn" onclick="speak('summary')">{>}</button>
+            </div>
+            <div class="en-sent">
+                Summary provides a concise overview of the project.
+                <button class="audio-btn" onclick="speak('Summary provides a concise overview of the project.')">{>}</button>
+            </div>
+            <div class="cn-sent">摘要提供项目的简明概述。</div>
+        </div>
+    </div>
+
+    <!-- DAY10 行业术语与职业发展类 -->
+    <div class="day-wrap">
+        <div class="day-title">Day10 行业术语与职业发展类</div>
+
+        <div class="item">
+            <div class="word-row">
+                <span class="word">portfolio</span>
+                <span class="phonetic">/pɔːtˈfəʊliəʊ/</span>
+                <span class="cn-mean">n. 作品集</span>
+                <button class="audio-btn" onclick="speak('portfolio')">{>}</button>
+            </div>
+            <div class="en-sent">
+                Build a strong portfolio to showcase your best works.
+                <button class="audio-btn" onclick="speak('Build a strong portfolio to showcase your best works.')">{>}</button>
+            </div>
+            <div class="cn-sent">打造一份优秀的作品集来展示你的最佳作品。</div>
+        </div>
+
+        <div class="item">
+            <div class="word-row">
+                <span class="word">brand identity</span>
+                <span class="phonetic">/brænd aɪˈdentəti/</span>
+                <span class="cn-mean">n. 品牌识别</span>
+                <button class="audio-btn" onclick="speak('brand identity')">{>}</button>
+            </div>
+            <div class="en-sent">
+                Create a consistent brand identity across all visual touchpoints.
+                <button class="audio-btn" onclick="speak('Create a consistent brand identity across all visual touchpoints.')">{>}</button>
+            </div>
+            <div class="cn-sent">在所有视觉接触点上创建统一的品牌识别。</div>
+        </div>
+
+        <div class="item">
+            <div class="word-row">
+                <span class="word">collaborate</span>
+                <span class="phonetic">/kəˈlæbəreɪt/</span>
+                <span class="cn-mean">v. 协作</span>
+                <button class="audio-btn" onclick="speak('collaborate')">{>}</button>
+            </div>
+            <div class="en-sent">
+                Collaborate with cross-functional teams on design projects.
+                <button class="audio-btn" onclick="speak('Collaborate with cross-functional teams on design projects.')">{>}</button>
+            </div>
+            <div class="cn-sent">与跨职能团队协作完成设计项目。</div>
+        </div>
+
+        <div class="item">
+            <div class="word-row">
+                <span class="word">pitch</span>
+                <span class="phonetic">/pɪtʃ/</span>
+                <span class="cn-mean">n./v. 推介、提案</span>
+                <button class="audio-btn" onclick="speak('pitch')">{>}</button>
+            </div>
+            <div class="en-sent">
+                Pitch your design concept to clients in 5 minutes.
+                <button class="audio-btn" onclick="speak('Pitch your design concept to clients in 5 minutes.')">{>}</button>
+            </div>
+            <div class="cn-sent">在5分钟内向客户推介你的设计概念。</div>
+        </div>
+
+        <div class="item">
+            <div class="word-row">
+                <span class="word">deadline</span>
+                <span class="phonetic">/ˈdedlaɪn/</span>
+                <span class="cn-mean">n. 截止日期</span>
+                <button class="audio-btn" onclick="speak('deadline')">{>}</button>
+            </div>
+            <div class="en-sent">
+                Manage your time effectively to meet the project deadline.
+                <button class="audio-btn" onclick="speak('Manage your time effectively to meet the project deadline.')">{>}</button>
+            </div>
+            <div class="cn-sent">有效管理时间以按时完成项目。</div>
+        </div>
+
+        <div class="item">
+            <div class="word-row">
+                <span class="word">iteration</span>
+                <span class="phonetic">/ˌɪtəˈreɪʃn/</span>
+                <span class="cn-mean">n. 迭代</span>
+                <button class="audio-btn" onclick="speak('iteration')">{>}</button>
+            </div>
+            <div class="en-sent">
+                Multiple iterations improve the final design quality.
+                <button class="audio-btn" onclick="speak('Multiple iterations improve the final design quality.')">{>}</button>
+            </div>
+            <div class="cn-sent">多轮迭代提升最终设计质量。</div>
+        </div>
+
+        <div class="item">
+            <div class="word-row">
+                <span class="word">trend</span>
+                <span class="phonetic">/trend/</span>
+                <span class="cn-mean">n. 趋势</span>
+                <button class="audio-btn" onclick="speak('trend')">{>}</button>
+            </div>
+            <div class="en-sent">
+                Follow design trends while maintaining your own style.
+                <button class="audio-btn" onclick="speak('Follow design trends while maintaining your own style.')">{>}</button>
+            </div>
+            <div class="cn-sent">紧跟设计趋势，同时保持个人风格。</div>
+        </div>
+
+        <div class="item">
+            <div class="word-row">
+                <span class="word">freelance</span>
+                <span class="phonetic">/ˈfriːlɑːns/</span>
+                <span class="cn-mean">adj./n. 自由职业</span>
+                <button class="audio-btn" onclick="speak('freelance')">{>}</button>
+            </div>
+            <div class="en-sent">
+                Many designers start their careers as freelance creatives.
+                <button class="audio-btn" onclick="speak('Many designers start their careers as freelance creatives.')">{>}</button>
+            </div>
+            <div class="cn-sent">许多设计师以自由职业者身份开启职业生涯。</div>
+        </div>
+
+        <div class="item">
+            <div class="word-row">
+                <span class="word">agency</span>
+                <span class="phonetic">/ˈeɪdʒənsi/</span>
+                <span class="cn-mean">n. 设计公司</span>
+                <button class="audio-btn" onclick="speak('agency')">{>}</button>
+            </div>
+            <div class="en-sent">
+                Work at a design agency to gain diverse project experience.
+                <button class="audio-btn" onclick="speak('Work at a design agency to gain diverse project experience.')">{>}</button>
+            </div>
+            <div class="cn-sent">在设计公司工作获得多样化项目经验。</div>
+        </div>
+
+        <div class="item">
+            <div class="word-row">
+                <span class="word">client</span>
+                <span class="phonetic">/ˈklaɪənt/</span>
+                <span class="cn-mean">n. 客户</span>
+                <button class="audio-btn" onclick="speak('client')">{>}</button>
+            </div>
+            <div class="en-sent">
+                Communicate effectively with clients to understand needs.
+                <button class="audio-btn" onclick="speak('Communicate effectively with clients to understand needs.')">{>}</button>
+            </div>
+            <div class="cn-sent">与客户有效沟通以了解需求。</div>
+        </div>
+
+        <div class="item">
+            <div class="word-row">
+                <span class="word">brief</span>
+                <span class="phonetic">/briːf/</span>
+                <span class="cn-mean">n. 简报</span>
+                <button class="audio-btn" onclick="speak('brief')">{>}</button>
+            </div>
+            <div class="en-sent">
+                Understand the brief thoroughly before starting design.
+                <button class="audio-btn" onclick="speak('Understand the brief thoroughly before starting design.')">{>}</button>
+            </div>
+            <div class="cn-sent">在开始设计前充分理解简报。</div>
+        </div>
+
+        <div class="item">
+            <div class="word-row">
+                <span class="word">pitch</span>
+                <span class="phonetic">/pɪtʃ/</span>
+                <span class="cn-mean">n./v. 提案</span>
+                <button class="audio-btn" onclick="speak('pitch')">{>}</button>
+            </div>
+            <div class="en-sent">
+                Pitch creative ideas to potential clients confidently.
+                <button class="audio-btn" onclick="speak('Pitch creative ideas to potential clients confidently.')">{>}</button>
+            </div>
+            <div class="cn-sent">自信地向潜在客户推介创意方案。</div>
+        </div>
+
+        <div class="item">
+            <div class="word-row">
+                <span class="word">contract</span>
+                <span class="phonetic">/ˈkɒntrækt/</span>
+                <span class="cn-mean">n. 合同</span>
+                <button class="audio-btn" onclick="speak('contract')">{>}</button>
+            </div>
+            <div class="en-sent">
+                Review contracts carefully before signing agreements.
+                <button class="audio-btn" onclick="speak('Review contracts carefully before signing agreements.')">{>}</button>
+            </div>
+            <div class="cn-sent">签署协议前仔细审阅合同。</div>
+        </div>
+
+        <div class="item">
+            <div class="word-row">
+                <span class="word">negotiation</span>
+                <span class="phonetic">/nɪˌɡəʊʃiˈeɪʃn/</span>
+                <span class="cn-mean">n. 谈判</span>
+                <button class="audio-btn" onclick="speak('negotiation')">{>}</button>
+            </div>
+            <div class="en-sent">
+                Negotiation skills help secure fair project terms.
+                <button class="audio-btn" onclick="speak('Negotiation skills help secure fair project terms.')">{>}</button>
+            </div>
+            <div class="cn-sent">谈判技巧有助于确保公平的项目条款。</div>
+        </div>
+
+        <div class="item">
+            <div class="word-row">
+                <span class="word">networking</span>
+                <span class="phonetic">/ˈnetwɜːkɪŋ/</span>
+                <span class="cn-mean">n. 人脉拓展</span>
+                <button class="audio-btn" onclick="speak('networking')">{>}</button>
+            </div>
+            <div class="en-sent">
+                Networking builds professional connections in the industry.
+                <button class="audio-btn" onclick="speak('Networking builds professional connections in the industry.')">{>}</button>
+            </div>
+            <div class="cn-sent">人脉拓展在行业中建立专业联系。</div>
+        </div>
+
+        <div class="item">
+            <div class="word-row">
+                <span class="word">resume</span>
+                <span class="phonetic">/ˈrezəmeɪ/</span>
+                <span class="cn-mean">n. 简历</span>
+                <button class="audio-btn" onclick="speak('resume')">{>}</button>
+            </div>
+            <div class="en-sent">
+                Create a strong resume highlighting your skills.
+                <button class="audio-btn" onclick="speak('Create a strong resume highlighting your skills.')">{>}</button>
+            </div>
+            <div class="cn-sent">创建一份突出技能的优秀简历。</div>
+        </div>
+
+        <div class="item">
+            <div class="word-row">
+                <span class="word">interview</span>
+                <span class="phonetic">/ˈɪntəvjuː/</span>
+                <span class="cn-mean">n. 面试</span>
+                <button class="audio-btn" onclick="speak('interview')">{>}</button>
+            </div>
+            <div class="en-sent">
+                Prepare thoroughly for design job interviews.
+                <button class="audio-btn" onclick="speak('Prepare thoroughly for design job interviews.')">{>}</button>
+            </div>
+            <div class="cn-sent">为设计工作面试做好充分准备。</div>
+        </div>
+
+        <div class="item">
+            <div class="word-row">
+                <span class="word">salary</span>
+                <span class="phonetic">/ˈsæləri/</span>
+                <span class="cn-mean">n. 薪资</span>
+                <button class="audio-btn" onclick="speak('salary')">{>}</button>
+            </div>
+            <div class="en-sent">
+                Discuss salary expectations during job negotiations.
+                <button class="audio-btn" onclick="speak('Discuss salary expectations during job negotiations.')">{>}</button>
+            </div>
+            <div class="cn-sent">在工作谈判中讨论薪资期望。</div>
+        </div>
+
+        <div class="item">
+            <div class="word-row">
+                <span class="word">promotion</span>
+                <span class="phonetic">/prəˈməʊʃn/</span>
+                <span class="cn-mean">n. 晋升</span>
+                <button class="audio-btn" onclick="speak('promotion')">{>}</button>
+            </div>
+            <div class="en-sent">
+                Pursue promotions by demonstrating leadership skills.
+                <button class="audio-btn" onclick="speak('Pursue promotions by demonstrating leadership skills.')">{>}</button>
+            </div>
+            <div class="cn-sent">通过展示领导能力追求晋升。</div>
+        </div>
+
+        <div class="item">
+            <div class="word-row">
+                <span class="word">career</span>
+                <span class="phonetic">/kəˈrɪə/</span>
+                <span class="cn-mean">n. 职业生涯</span>
+                <button class="audio-btn" onclick="speak('career')">{>}</button>
+            </div>
+            <div class="en-sent">
+                Plan your career path in digital media art strategically.
+                <button class="audio-btn" onclick="speak('Plan your career path in digital media art strategically.')">{>}</button>
+            </div>
+            <div class="cn-sent">战略性规划数字媒体艺术领域的职业路径。</div>
+        </div>
+    </div>
