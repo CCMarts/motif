@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Motif</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@1,300&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "PingFang SC", "Microsoft YaHei", sans-serif; background-color: #0a0a0a; background-image: linear-gradient(#141414 1px, transparent 1px), linear-gradient(90deg, #141414 1px, transparent 1px); background-size: 40px 40px; min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 20px; overflow-x: hidden; }
+        .container { width: 100%; max-width: 420px; }
+        .card { background: #1a1a1a; border: 1px solid #2a2a2a; border-radius: 4px; padding: 32px 24px; box-shadow: 0 20px 60px rgba(0,0,0,0.5); text-align: center; position: relative; aspect-ratio: 9/16; display: flex; flex-direction: column; justify-content: center; animation: slideIn 0.4s ease-out; }
+        @keyframes slideIn { from { opacity: 0; transform: translateX(50px) scale(0.95); } to { opacity: 1; transform: translateX(0) scale(1); } }
+        @keyframes slideOut { from { opacity: 1; transform: translateX(0) scale(1); } to { opacity: 0; transform: translateX(-50px) scale(0.95); } }
+        .card.fade-out { animation: slideOut 0.3s ease-in forwards; }
+        .category { display: inline-block; background: #2a2a2a; color: #888; font-size: 12px; padding: 6px 14px; border-radius: 4px; margin-bottom: 20px; font-weight: 500; letter-spacing: 0.5px; align-self: center; }
+        .word { font-size: 36px; font-weight: 800; color: #f5f5f5; margin-bottom: 8px; line-height: 1.2; }
+        .phonetic { font-size: 18px; color: #aaa; margin-bottom: 16px; font-family: "Times New Roman", Georgia, serif; }
+        .meaning { font-size: 16px; color: #999; margin-bottom: 20px; line-height: 1.5; }
+        .etymology { font-size: 13px; color: #555; line-height: 1.6; margin-bottom: 20px; font-style: italic; padding: 10px 12px; background: #141414; border-radius: 4px; text-align: left; }
+        .etymology::before { content: "词根 "; color: #666; font-weight: 600; font-style: normal; }
+        .divider { width: 40px; height: 3px; background: #333; border-radius: 2px; margin: 0 auto 20px; }
+        .sentence { font-size: 15px; color: #ccc; line-height: 1.7; margin-bottom: 10px; font-style: italic; }
+        .cn-translation { font-size: 14px; color: #555; line-height: 1.6; margin-bottom: 24px; }
+        .speak-btn { background: #2a2a2a; border: 1px solid #333; color: #f5f5f5; width: 56px; height: 56px; border-radius: 4px; font-size: 22px; cursor: pointer; margin: 0 auto; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 15px rgba(0,0,0,0.4); transition: transform 0.15s, box-shadow 0.15s; user-select: none; -webkit-user-select: none; }
+        .speak-btn:active { transform: scale(0.92); box-shadow: 0 2px 8px rgba(0,0,0,0.3); background: #333; }
+        .controls { display: flex; align-items: center; justify-content: space-between; margin-top: 24px; gap: 12px; }
+        .ctrl-btn { flex: 1; background: #1a1a1a; border: 1px solid #2a2a2a; color: #888; font-size: 15px; padding: 14px 0; border-radius: 4px; cursor: pointer; font-weight: 500; transition: all 0.2s; user-select: none; -webkit-user-select: none; }
+        .ctrl-btn:active { background: #2a2a2a; border-color: #333; color: #ccc; transform: scale(0.96); }
+        .progress { margin-top: 16px; color: #555; font-size: 14px; text-align: center; font-weight: 500; letter-spacing: 1px; }
+        .hint { margin-top: 10px; color: #333; font-size: 12px; text-align: center; }
+        .smiley-view { display: none; width: 100%; max-width: 420px; flex-direction: column; align-items: center; }
+        .smiley-view.active { display: flex; }
+        .smiley-view canvas { width: 100%; aspect-ratio: 1; cursor: pointer; }
+        .smiley-hint { margin-top: 16px; color: #555; font-size: 13px; text-align: center; }
+        .smiley-back { margin-top: 16px; width: 100%; }
+        .motif { position: absolute; top: 60px; left: 50%; transform: translateX(-50%); font-family: 'Cormorant Garamond', serif; font-style: italic; font-weight: 300; font-size: 22px; color: #888; z-index: 9999; pointer-events: none; user-select: none; -webkit-user-select: none; }
+    </style>
+</head>
+<body>
+    <div class="motif">Motif*</div>
+    <div class="container" id="container">
+        <div class="card" id="card">
+            <div class="category" id="category"></div>
+            <div class="word" id="word"></div>
+            <div class="phonetic" id="phonetic"></div>
+            <div class="meaning" id="meaning"></div>
+            <div class="etymology" id="etymology"></div>
+            <div class="divider"></div>
+            <div class="sentence" id="sentence"></div>
+            <div class="cn-translation" id="cnTranslation"></div>
+            <button class="speak-btn" id="speakBtn" onclick="speakCurrent()"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#f5f5f5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path><path d="M19.07 4.93a10 10 0 0 1 0 14.14"></path></svg></button>
+        </div>
+        <div class="controls">
+            <button class="ctrl-btn" onclick="randomWord()">&#8592; 上一个</button>
+            <button class="ctrl-btn" onclick="showSmiley()">选择</button>
+            <button class="ctrl-btn" onclick="randomWord()">下一个 &#8594;</button>
+        </div>
+        <div class="progress" id="progress"></div>
+        <div class="hint">&#8592; 左右滑动 / 键盘箭头切换 &#8594;</div>
+    </div>
+
+    <div class="smiley-view" id="smileyView">
+        <canvas id="smileyCanvas"></canvas>
+        <div class="smiley-hint" id="smileyHint">点击任意圆点查看单词</div>
+        <button class="ctrl-btn smiley-back" onclick="hideSmiley()">返回</button>
+    </div>
+
+    <script>
+        const words = [
+{word:"composition",phonetic:"/\u02cck\u0252mp\u0259\u02c8z\u026a\u0283n/",meaning:"n. \u6784\u56fe\u3001\u753b\u9762\u6784\u6210",sentence:"The composition of this poster follows the golden ratio for better visual balance.",cn_translation:"\u8fd9\u5f20\u6d77\u62a5\u7684\u6784\u56fe\u9075\u5faa\u9ec4\u91d1\u6bd4\u4f8b\uff0c\u62e5\u6709\u66f4\u597d\u7684\u89c6\u89c9\u5e73\u8861\u3002",category:"\u57fa\u7840\u89c6\u89c9\u6784\u56fe\u4e0e\u7f8e\u5b66\u7c7b",etymology:"把东西放一起摆好看的艺术，拉丁语祖传手艺。"},
+{word:"layout",phonetic:"/\u02c8le\u026aa\u028at/",meaning:"n. \u7248\u5f0f\u3001\u5e03\u5c40",sentence:"I adjusted the layout of the interface to improve information readability.",cn_translation:"\u6211\u8c03\u6574\u4e86\u754c\u9762\u5e03\u5c40\uff0c\u63d0\u5347\u4e86\u4fe1\u606f\u53ef\u8bfb\u6027\u3002",category:"\u57fa\u7840\u89c6\u89c9\u6784\u56fe\u4e0e\u7f8e\u5b66\u7c7b",etymology:"铺开摆好的格局，古英语老祖宗的布置学。"},
+{word:"hierarchy",phonetic:"/\u02c8ha\u026a\u0259r\u0251\u02d0ki/",meaning:"n. \u89c6\u89c9\u5c42\u7ea7",sentence:"Font size and color build a clear visual hierarchy on the screen.",cn_translation:"\u5b57\u53f7\u4e0e\u8272\u5f69\u5728\u753b\u9762\u4e2d\u6784\u5efa\u51fa\u6e05\u6670\u7684\u89c6\u89c9\u5c42\u7ea7\u3002",category:"\u57fa\u7840\u89c6\u89c9\u6784\u56fe\u4e0e\u7f8e\u5b66\u7c7b",etymology:"希腊人搞的神圣等级制，视觉圈也玩这套。"},
+{word:"contrast",phonetic:"/\u02c8k\u0252ntr\u0251\u02d0st/",meaning:"n. \u5bf9\u6bd4\u3001\u53cd\u5dee",sentence:"High contrast strengthens the focus of the key visual element.",cn_translation:"\u9ad8\u5bf9\u6bd4\u5ea6\u80fd\u591f\u5f3a\u5316\u6838\u5fc3\u89c6\u89c9\u5143\u7d20\u7684\u7126\u70b9\u3002",category:"\u57fa\u7840\u89c6\u89c9\u6784\u56fe\u4e0e\u7f8e\u5b66\u7c7b",etymology:"对着站比谁更靓，拉丁语的PK艺术。"},
+{word:"symmetry",phonetic:"/\u02c8s\u026am\u0259tri/",meaning:"n. \u5bf9\u79f0",sentence:"Symmetry layout is widely used in minimalist UI design.",cn_translation:"\u5bf9\u79f0\u5e03\u5c40\u5e7f\u6cdb\u5e94\u7528\u4e8e\u6781\u7b80UI\u8bbe\u8ba1\u3002",category:"\u57fa\u7840\u89c6\u89c9\u6784\u56fe\u4e0e\u7f8e\u5b66\u7c7b",etymology:"一起量出来的匀称美，希腊人的强迫症福音。"},
+{word:"proportion",phonetic:"/pr\u0259\u02c8p\u0254\u02d0\u0283n/",meaning:"n. \u6bd4\u4f8b",sentence:"Check the proportion of icons before exporting the final design file.",cn_translation:"\u5bfc\u51fa\u6700\u7ec8\u6587\u4ef6\u524d\uff0c\u9700\u8981\u6838\u5bf9\u56fe\u6807\u6bd4\u4f8b\u3002",category:"\u57fa\u7840\u89c6\u89c9\u6784\u56fe\u4e0e\u7f8e\u5b66\u7c7b",etymology:"按部分分配的美学，拉丁语祖传配方。"},
+{word:"minimalism",phonetic:"/\u02c8m\u026an\u026am\u0259l\u026az\u0259m/",meaning:"n. \u6781\u7b80\u4e3b\u4e49",sentence:"This motion work adopts minimalism to reduce unnecessary visual noise.",cn_translation:"\u8be5\u52a8\u6001\u4f5c\u54c1\u91c7\u7528\u6781\u7b80\u98ce\u683c\uff0c\u51cf\u5c11\u591a\u4f59\u89c6\u89c9\u5e72\u6270\u3002",category:"\u57fa\u7840\u89c6\u89c9\u6784\u56fe\u4e0e\u7f8e\u5b66\u7c7b",etymology:"最小主义，拉丁语教你做减法的艺术。"},
+{word:"aesthetic",phonetic:"/i\u02d0s\u02c8\u03b8et\u026ak/",meaning:"adj. \u7f8e\u5b66\u7684\u3001\u5ba1\u7f8e\u7684",sentence:"We optimize the aesthetic feeling of dynamic frames through color grading.",cn_translation:"\u6211\u4eec\u901a\u8fc7\u8c03\u8272\u63d0\u5347\u52a8\u6001\u753b\u9762\u7684\u7f8e\u5b66\u8d28\u611f\u3002",category:"\u57fa\u7840\u89c6\u89c9\u6784\u56fe\u4e0e\u7f8e\u5b66\u7c7b",etymology:"希腊人说我感觉到了，后来变成我觉得美。"},
+{word:"balance",phonetic:"/\u02c8b\u00e6l\u0259ns/",meaning:"n. \u5e73\u8861",sentence:"Visual balance creates a stable and comfortable viewing experience.",cn_translation:"\u89c6\u89c9\u5e73\u8861\u521b\u9020\u7a33\u5b9a\u8212\u9002\u7684\u89c2\u770b\u4f53\u9a8c\u3002",category:"\u57fa\u7840\u89c6\u89c9\u6784\u56fe\u4e0e\u7f8e\u5b66\u7c7b",etymology:"两个盘子比谁重，拉丁语的天平哲学。"},
+{word:"rhythm",phonetic:"/\u02c8r\u026a\u00f0\u0259m/",meaning:"n. \u8282\u594f",sentence:"Repeating elements establish a visual rhythm across the design.",cn_translation:"\u91cd\u590d\u5143\u7d20\u5728\u8bbe\u8ba1\u4e2d\u5efa\u7acb\u89c6\u89c9\u8282\u594f\u3002",category:"\u57fa\u7840\u89c6\u89c9\u6784\u56fe\u4e0e\u7f8e\u5b66\u7c7b",etymology:"流动的节奏感，希腊人祖传的律动DNA。"},
+{word:"wireframe",phonetic:"/\u02c8wa\u026a\u0259fre\u026am/",meaning:"n. \u7ebf\u6846\u56fe",sentence:"I finish the wireframe first before making high-fidelity prototypes.",cn_translation:"\u5236\u4f5c\u9ad8\u4fdd\u771f\u539f\u578b\u524d\uff0c\u6211\u5148\u5b8c\u6210\u7ebf\u6846\u56fe\u8bbe\u8ba1\u3002",category:"UI\u754c\u9762\u4e0e\u4ea4\u4e92\u8bbe\u8ba1\u7c7b",etymology:"金属线搭架子，古英语加古法语的混搭风。"},
+{word:"prototype",phonetic:"/\u02c8pr\u0259\u028at\u0259ta\u026ap/",meaning:"n. \u539f\u578b",sentence:"Clickable prototypes help test real user operation logic.",cn_translation:"\u53ef\u4ea4\u4e92\u539f\u578b\u6709\u52a9\u4e8e\u6d4b\u8bd5\u771f\u5b9e\u7528\u6237\u64cd\u4f5c\u903b\u8f91\u3002",category:"UI\u754c\u9762\u4e0e\u4ea4\u4e92\u8bbe\u8ba1\u7c7b",etymology:"最初的型式，希腊人教你做第一版。"},
+{word:"interface",phonetic:"/\u02c8\u026ant\u0259fe\u026as/",meaning:"n. \u754c\u9762",sentence:"The clean interface brings a comfortable browsing experience.",cn_translation:"\u7b80\u6d01\u7684\u754c\u9762\u5e26\u6765\u8212\u9002\u7684\u6d4f\u89c8\u4f53\u9a8c\u3002",category:"UI\u754c\u9762\u4e0e\u4ea4\u4e92\u8bbe\u8ba1\u7c7b",etymology:"两个面之间的交接面，系统的对接窗口。"},
+{word:"responsive",phonetic:"/r\u026a\u02c8sp\u0252ns\u026av/",meaning:"adj. \u54cd\u5e94\u5f0f\u7684",sentence:"Responsive design adapts the page to mobile and desktop screens.",cn_translation:"\u54cd\u5e94\u5f0f\u8bbe\u8ba1\u8ba9\u9875\u9762\u9002\u914d\u624b\u673a\u4e0e\u7535\u8111\u5c4f\u5e55\u3002",category:"UI\u754c\u9762\u4e0e\u4ea4\u4e92\u8bbe\u8ba1\u7c7b",etymology:"会回应的，拉丁语教你怎么接话茬。"},
+{word:"usability",phonetic:"/\u02ccju\u02d0z\u0259\u02c8b\u026al\u0259ti/",meaning:"n. \u53ef\u7528\u6027",sentence:"Usability testing finds unreasonable interaction steps quickly.",cn_translation:"\u53ef\u7528\u6027\u6d4b\u8bd5\u53ef\u4ee5\u5feb\u901f\u53d1\u73b0\u4e0d\u5408\u7406\u7684\u4ea4\u4e92\u6b65\u9aa4\u3002",category:"UI\u754c\u9762\u4e0e\u4ea4\u4e92\u8bbe\u8ba1\u7c7b",etymology:"能用好用才叫本事，可用性就是用户体验。"},
+{word:"icon",phonetic:"/\u02c8a\u026ak\u0252n/",meaning:"n. \u56fe\u6807",sentence:"Vector icons will not blur after scaling up the canvas.",cn_translation:"\u77e2\u91cf\u56fe\u6807\u653e\u5927\u753b\u5e03\u540e\u4e0d\u4f1a\u6a21\u7cca\u3002",category:"UI\u754c\u9762\u4e0e\u4ea4\u4e92\u8bbe\u8ba1\u7c7b",etymology:"希腊人的画像，后来变成电脑上的小图标。"},
+{word:"pixel",phonetic:"/\u02c8p\u026aksl/",meaning:"n. \u50cf\u7d20",sentence:"This canvas is set to 1920\u00d71080 pixels for HD export.",cn_translation:"\u753b\u5e03\u8bbe\u7f6e\u4e3a1920\u00d71080\u50cf\u7d20\uff0c\u7528\u4e8e\u9ad8\u6e05\u5bfc\u51fa\u3002",category:"UI\u754c\u9762\u4e0e\u4ea4\u4e92\u8bbe\u8ba1\u7c7b",etymology:"图片元素缩写，每一个都是颜值担当。"},
+{word:"mockup",phonetic:"/\u02c8m\u0252k\u028cp/",meaning:"n. \u6a21\u578b\u3001\u6837\u673a",sentence:"Create a high-fidelity mockup to showcase the final design.",cn_translation:"\u521b\u5efa\u9ad8\u4fdd\u771f\u6a21\u578b\u5c55\u793a\u6700\u7ec8\u8bbe\u8ba1\u3002",category:"UI\u754c\u9762\u4e0e\u4ea4\u4e92\u8bbe\u8ba1\u7c7b",etymology:"模拟出来的样子，古法语教你装得像。"},
+{word:"navigation",phonetic:"/\u02ccn\u00e6v\u026a\u02c8\u0261e\u026a\u0283n/",meaning:"n. \u5bfc\u822a",sentence:"Clear navigation helps users find content efficiently.",cn_translation:"\u6e05\u6670\u7684\u5bfc\u822a\u5e2e\u52a9\u7528\u6237\u9ad8\u6548\u627e\u5230\u5185\u5bb9\u3002",category:"UI\u754c\u9762\u4e0e\u4ea4\u4e92\u8bbe\u8ba1\u7c7b",etymology:"驾船航行，拉丁语祖传的找路技能。"},
+{word:"button",phonetic:"/\u02c8b\u028ctn/",meaning:"n. \u6309\u94ae",sentence:"Design clickable buttons with clear visual feedback.",cn_translation:"\u8bbe\u8ba1\u5e26\u6709\u6e05\u6670\u89c6\u89c9\u53cd\u9988\u7684\u53ef\u70b9\u51fb\u6309\u94ae\u3002",category:"UI\u754c\u9762\u4e0e\u4ea4\u4e92\u8bbe\u8ba1\u7c7b",etymology:"推一下就有反应，古法语的按压艺术。"},
+{word:"keyframe",phonetic:"/\u02c8ki\u02d0fre\u026am/",meaning:"n. \u5173\u952e\u5e27",sentence:"Add keyframes on the timeline to control object position changes.",cn_translation:"\u5728\u65f6\u95f4\u8f74\u6dfb\u52a0\u5173\u952e\u5e27\uff0c\u63a7\u5236\u7269\u4f53\u4f4d\u7f6e\u53d8\u5316\u3002",category:"\u52a8\u6001\u56fe\u5f62MG\u52a8\u753b\u7c7b",etymology:"关键的那一帧，古英语教你抓重点。"},
+{word:"timeline",phonetic:"/\u02c8ta\u026aml\u02c8a\u026an/",meaning:"n. \u65f6\u95f4\u8f74",sentence:"Arrange all clips and animations on the timeline in order.",cn_translation:"\u5c06\u6240\u6709\u7247\u6bb5\u548c\u52a8\u753b\u6709\u5e8f\u6392\u5217\u5728\u65f6\u95f4\u8f74\u4e0a\u3002",category:"\u52a8\u6001\u56fe\u5f62MG\u52a8\u753b\u7c7b",etymology:"时间拉成一条线，古英语加拉丁语的时间轴。"},
+{word:"easing",phonetic:"/\u02c8i\u02d0z\u026a\u014b/",meaning:"n. \u7f13\u52a8\u66f2\u7ebf",sentence:"Adjust easing curves to make the animation look more natural.",cn_translation:"\u8c03\u6574\u7f13\u52a8\u66f2\u7ebf\uff0c\u8ba9\u52a8\u753b\u66f4\u52a0\u81ea\u7136\u6d41\u7545\u3002",category:"\u52a8\u6001\u56fe\u5f62MG\u52a8\u753b\u7c7b",etymology:"轻松一下慢慢来，古法语的缓动艺术。"},
+{word:"transition",phonetic:"/tr\u00e6n\u02c8z\u026a\u0283n/",meaning:"n. \u8f6c\u573a",sentence:"A smooth transition connects two different scene clips.",cn_translation:"\u987a\u6ed1\u7684\u8f6c\u573a\u8854\u63a5\u4e24\u4e2a\u4e0d\u540c\u753b\u9762\u7247\u6bb5\u3002",category:"\u52a8\u6001\u56fe\u5f62MG\u52a8\u753b\u7c7b",etymology:"跨过去走过来，拉丁语教你优雅转场。"},
+{word:"frame",phonetic:"/fre\u026am/",meaning:"n. \u5e27",sentence:"We set 60 frames per second for smooth motion graphics.",cn_translation:"\u6211\u4eec\u8bbe\u7f6e\u6bcf\u79d260\u5e27\uff0c\u4fdd\u8bc1\u52a8\u6001\u753b\u9762\u6d41\u7545\u3002",category:"\u52a8\u6001\u56fe\u5f62MG\u52a8\u753b\u7c7b",etymology:"推进去的画面，古英语的框架哲学。"},
+{word:"loop",phonetic:"/lu\u02d0p/",meaning:"n. \u5faa\u73af",sentence:"Export a loop animation for webpage background decoration.",cn_translation:"\u5bfc\u51fa\u5faa\u73af\u52a8\u753b\uff0c\u7528\u4f5c\u7f51\u9875\u80cc\u666f\u88c5\u9970\u3002",category:"\u52a8\u6001\u56fe\u5f62MG\u52a8\u753b\u7c7b",etymology:"跳一圈又回来，古英语的循环蹦迪。"},
+{word:"layer",phonetic:"/\u02c8le\u026a\u0259/",meaning:"n. \u56fe\u5c42",sentence:"Classify different elements into independent layers for easy editing.",cn_translation:"\u5c06\u4e0d\u540c\u5143\u7d20\u5206\u5c42\u7ba1\u7406\uff0c\u65b9\u4fbf\u540e\u671f\u7f16\u8f91\u3002",category:"\u52a8\u6001\u56fe\u5f62MG\u52a8\u753b\u7c7b",etymology:"一层一层叠起来，古英语的叠叠乐。"},
+{word:"mask",phonetic:"/m\u0251\u02d0sk/",meaning:"n. \u8499\u7248",sentence:"Use a mask to limit the display range of video footage.",cn_translation:"\u4f7f\u7528\u8499\u7248\u9650\u5236\u89c6\u9891\u753b\u9762\u7684\u663e\u793a\u8303\u56f4\u3002",category:"\u52a8\u6001\u56fe\u5f62MG\u52a8\u753b\u7c7b",etymology:"面具戴起来，中世纪拉丁语的遮遮掩掩。"},
+{word:"animation",phonetic:"/\u02cc\u00e6n\u026a\u02c8me\u026a\u0283n/",meaning:"n. \u52a8\u753b",sentence:"Smooth animation enhances user engagement with the interface.",cn_translation:"\u6d41\u7545\u7684\u52a8\u753b\u589e\u5f3a\u7528\u6237\u4e0e\u754c\u9762\u7684\u4e92\u52a8\u3002",category:"\u52a8\u6001\u56fe\u5f62MG\u52a8\u753b\u7c7b",etymology:"给它注入灵魂，拉丁语的生命魔法。"},
+{word:"motion",phonetic:"/\u02c8m\u0259\u028a\u0283n/",meaning:"n. \u8fd0\u52a8\u3001\u52a8\u6001",sentence:"Motion graphics combine design and animation for visual storytelling.",cn_translation:"\u52a8\u6001\u56fe\u5f62\u7ed3\u5408\u8bbe\u8ba1\u4e0e\u52a8\u753b\u8fdb\u884c\u89c6\u89c9\u53d9\u4e8b\u3002",category:"\u52a8\u6001\u56fe\u5f62MG\u52a8\u753b\u7c7b",etymology:"动起来就对了，拉丁语祖传的运动基因。"},
+{word:"render",phonetic:"/\u02c8rend\u0259/",meaning:"v./n. \u6e32\u67d3",sentence:"It takes ten minutes to render the final high-resolution video file.",cn_translation:"\u6e32\u67d3\u9ad8\u6e05\u6210\u7247\u5927\u7ea6\u9700\u8981\u5341\u5206\u949f\u3002",category:"\u6e32\u67d3\u3001\u5408\u6210\u4e0e\u5f71\u89c6\u540e\u671f\u7c7b",etymology:"还回去给你看，古法语的呈现艺术。"},
+{word:"composite",phonetic:"/\u02c8k\u0252mp\u0259z\u026at/",meaning:"v. \u5408\u6210",sentence:"We composite real footage with dynamic graphic elements in AE.",cn_translation:"\u6211\u4eec\u5728AE\u4e2d\u5c06\u5b9e\u62cd\u7d20\u6750\u4e0e\u52a8\u6001\u56fe\u5f62\u5143\u7d20\u5408\u6210\u3002",category:"\u6e32\u67d3\u3001\u5408\u6210\u4e0e\u5f71\u89c6\u540e\u671f\u7c7b",etymology:"放一起凑成整的，拉丁语的组合拳。"},
+{word:"footage",phonetic:"/\u02c8f\u028at\u026ad\u0292/",meaning:"n. \u5f71\u7247\u7d20\u6750",sentence:"Cut useless footage before starting color correction.",cn_translation:"\u8c03\u8272\u524d\u5148\u526a\u6389\u65e0\u6548\u7d20\u6750\u7247\u6bb5\u3002",category:"\u6e32\u67d3\u3001\u5408\u6210\u4e0e\u5f71\u89c6\u540e\u671f\u7c7b",etymology:"按英尺算的胶片，老电影人的计量单位。"},
+{word:"VFX",phonetic:"/\u02ccvi\u02d0 ef \u02c8eks/",meaning:"n. \u89c6\u89c9\u7279\u6548",sentence:"The glowing particle effect belongs to simple VFX production.",cn_translation:"\u53d1\u5149\u7c92\u5b50\u6548\u679c\u5c5e\u4e8e\u57fa\u7840\u89c6\u89c9\u7279\u6548\u5236\u4f5c\u3002",category:"\u6e32\u67d3\u3001\u5408\u6210\u4e0e\u5f71\u89c6\u540e\u671f\u7c7b",etymology:"视觉特效的缩写，就是让你哇塞的那种。"},
+{word:"export",phonetic:"/\u026ac\u02c8sp\u0254\u02d0t/",meaning:"v. \u5bfc\u51fa",sentence:"Export the project as MP4 format for portfolio submission.",cn_translation:"\u5bfc\u51faMP4\u6587\u4ef6\uff0c\u7528\u4e8e\u4f5c\u54c1\u96c6\u63d0\u4ea4\u3002",category:"\u6e32\u67d3\u3001\u5408\u6210\u4e0e\u5f71\u89c6\u540e\u671f\u7c7b",etymology:"搬出去带走，拉丁语的输出技能。"},
+{word:"resolution",phonetic:"/\u02ccrez\u0259\u02c8lu\u02d0\u0283n/",meaning:"n. \u5206\u8fa8\u7387",sentence:"3840\u00d72160 is standard 4K resolution for display works.",cn_translation:"3840\u00d72160\u662f\u4f5c\u54c1\u5c55\u793a\u7684\u6807\u51c64K\u5206\u8fa8\u7387\u3002",category:"\u6e32\u67d3\u3001\u5408\u6210\u4e0e\u5f71\u89c6\u540e\u671f\u7c7b",etymology:"解开来看清楚，拉丁语的解析度玄学。"},
+{word:"codec",phonetic:"/\u02c8k\u0259\u028ad\u025bk/",meaning:"n. \u7f16\u7801\u683c\u5f0f",sentence:"Choose the H.264 codec for wide compatibility on most devices.",cn_translation:"\u9009\u62e9H.264\u7f16\u7801\uff0c\u9002\u914d\u7edd\u5927\u591a\u6570\u8bbe\u5907\u3002",category:"\u6e32\u67d3\u3001\u5408\u6210\u4e0e\u5f71\u89c6\u540e\u671f\u7c7b",etymology:"编码解码二合一，技术宅的必备技能。"},
+{word:"color grading",phonetic:"/\u02c8k\u028cl\u0259 \u02c8\u0261re\u026ad\u026a\u014b/",meaning:"n. \u8c03\u8272",sentence:"Color grading sets the emotional tone of the video.",cn_translation:"\u8c03\u8272\u8bbe\u5b9a\u89c6\u9891\u7684\u60c5\u611f\u57fa\u8c03\u3002",category:"\u6e32\u67d3\u3001\u5408\u6210\u4e0e\u5f71\u89c6\u540e\u671f\u7c7b",etymology:"颜色分等级，拉丁语教你调色调到吐。"},
+{word:"compositing",phonetic:"/k\u0259m\u02c8p\u0252z\u026at\u026a\u014b/",meaning:"n. \u5408\u6210",sentence:"Compositing merges multiple visual elements into one scene.",cn_translation:"\u5408\u6210\u5c06\u591a\u4e2a\u89c6\u89c9\u5143\u7d20\u5408\u5e76\u5230\u4e00\u4e2a\u573a\u666f\u4e2d\u3002",category:"\u6e32\u67d3\u3001\u5408\u6210\u4e0e\u5f71\u89c6\u540e\u671f\u7c7b",etymology:"放一起合成，拉丁语的叠叠乐进阶版。"},
+{word:"green screen",phonetic:"/\u0261ri\u02d0n skri\u02d0n/",meaning:"n. \u7eff\u5e55",sentence:"Shoot on green screen for flexible background replacement.",cn_translation:"\u5728\u7eff\u5e55\u524d\u62cd\u6444\u4ee5\u4fbf\u7075\u6d3b\u66ff\u6362\u80cc\u666f\u3002",category:"\u6e32\u67d3\u3001\u5408\u6210\u4e0e\u5f71\u89c6\u540e\u671f\u7c7b",etymology:"绿幕抠像，古英语加古法语的换背景神器。"},
+{word:"palette",phonetic:"/\u02c8p\u00e6l\u0259t/",meaning:"n. \u8c03\u8272\u677f",sentence:"Build a unified color palette for the whole series of design works.",cn_translation:"\u4e3a\u6574\u5957\u7cfb\u5217\u4f5c\u54c1\u5efa\u7acb\u7edf\u4e00\u7684\u8c03\u8272\u89c4\u8303\u3002",category:"\u8272\u5f69\u3001\u6750\u8d28\u4e0e\u89c6\u89c9\u8d28\u611f\u7c7b",etymology:"小铲子变调色板，古法语的画家吃饭家伙。"},
+{word:"gradient",phonetic:"/\u02c8\u0261re\u026adi\u0259nt/",meaning:"n. \u6e10\u53d8",sentence:"Soft gradient backgrounds are popular in modern concept UI design.",cn_translation:"\u67d4\u548c\u6e10\u53d8\u80cc\u666f\u975e\u5e38\u6d41\u884c\u4e8e\u73b0\u4ee3\u6982\u5ff5UI\u8bbe\u8ba1\u3002",category:"\u8272\u5f69\u3001\u6750\u8d28\u4e0e\u89c6\u89c9\u8d28\u611f\u7c7b",etymology:"一步一步变颜色，拉丁语的渐变走步机。"},
+{word:"texture",phonetic:"/\u02c8tekst\u0283\u0259/",meaning:"n. \u7eb9\u7406\u3001\u6750\u8d28",sentence:"Overlay paper texture to increase the tactile sense of static images.",cn_translation:"\u53e0\u52a0\u7eb8\u5f20\u7eb9\u7406\uff0c\u63d0\u5347\u9759\u6001\u56fe\u7684\u89e6\u611f\u8d28\u611f\u3002",category:"\u8272\u5f69\u3001\u6750\u8d28\u4e0e\u89c6\u89c9\u8d28\u611f\u7c7b",etymology:"编出来的质感，拉丁语的编织艺术。"},
+{word:"saturation",phonetic:"/\u02ccs\u00e6t\u0283\u0259\u02c8re\u026a\u0283n/",meaning:"n. \u9971\u548c\u5ea6",sentence:"Lower saturation to create a calm and cold tone style.",cn_translation:"\u964d\u4f4e\u9971\u548c\u5ea6\uff0c\u6253\u9020\u51b7\u9759\u9ad8\u7ea7\u51b7\u8272\u8c03\u98ce\u683c\u3002",category:"\u8272\u5f69\u3001\u6750\u8d28\u4e0e\u89c6\u89c9\u8d28\u611f\u7c7b",etymology:"吃饱了撑的颜色，拉丁语的饱和度玄学。"},
+{word:"hue",phonetic:"/hju\u02d0/",meaning:"n. \u8272\u76f8",sentence:"Adjust the hue to match the overall theme of the project.",cn_translation:"\u8c03\u6574\u8272\u76f8\uff0c\u5339\u914d\u9879\u76ee\u6574\u4f53\u4e3b\u9898\u6c1b\u56f4\u3002",category:"\u8272\u5f69\u3001\u6750\u8d28\u4e0e\u89c6\u89c9\u8d28\u611f\u7c7b",etymology:"颜色长相，古英语的色相美学。"},
+{word:"shadow",phonetic:"/\u02c8\u0283\u00e6d\u0259\u028a/",meaning:"n. \u9634\u5f71",sentence:"Soft shadow enhances the layering of floating cards.",cn_translation:"\u67d4\u548c\u9634\u5f71\u589e\u5f3a\u60ac\u6d6e\u5361\u7247\u7684\u5c42\u6b21\u611f\u3002",category:"\u8272\u5f69\u3001\u6750\u8d28\u4e0e\u89c6\u89c9\u8d28\u611f\u7c7b",etymology:"遮出来的影子，古英语的光影魔术。"},
+{word:"glow",phonetic:"/\u0261l\u0259\u028a/",meaning:"n. \u53d1\u5149\u6548\u679c",sentence:"Add subtle glow to highlight core interactive buttons.",cn_translation:"\u6dfb\u52a0\u5fae\u5f31\u53d1\u5149\uff0c\u7a81\u51fa\u6838\u5fc3\u4ea4\u4e92\u6309\u94ae\u3002",category:"\u8272\u5f69\u3001\u6750\u8d28\u4e0e\u89c6\u89c9\u8d28\u611f\u7c7b",etymology:"炽热发光，古英语的自带Buff效果。"},
+{word:"tone",phonetic:"/t\u0259\u028a/",meaning:"n. \u8272\u8c03",sentence:"Warm tones create a cozy and inviting atmosphere.",cn_translation:"\u6696\u8272\u8c03\u8425\u9020\u8212\u9002\u6e29\u99a8\u7684\u6c1b\u56f4\u3002",category:"\u8272\u5f69\u3001\u6750\u8d28\u4e0e\u89c6\u89c9\u8d28\u611f\u7c7b",etymology:"音调变色调，希腊人的紧张美学。"},
+{word:"value",phonetic:"/\u02c8v\u00e6lju\u02d0/",meaning:"n. \u660e\u5ea6",sentence:"Contrast in value creates visual depth.",cn_translation:"\u660e\u5ea6\u5bf9\u6bd4\u521b\u9020\u89c6\u89c9\u6df1\u5ea6\u3002",category:"\u8272\u5f69\u3001\u6750\u8d28\u4e0e\u89c6\u89c9\u8d28\u611f\u7c7b",etymology:"又值钱又明亮，拉丁语的双重身份。"},
+{word:"complementary",phonetic:"/\u02cck\u0252mpl\u026a\u02c8mentri/",meaning:"adj. \u4e92\u8865\u7684",sentence:"Complementary colors create strong visual contrast.",cn_translation:"\u4e92\u8865\u8272\u4ea7\u751f\u5f3a\u70c8\u7684\u89c6\u89c9\u5bf9\u6bd4\u3002",category:"\u8272\u5f69\u3001\u6750\u8d28\u4e0e\u89c6\u89c9\u8d28\u611f\u7c7b",etymology:"完全填满的互补色，拉丁语的天生一对。"},
+{word:"prompt",phonetic:"/pr\u0252mpt/",meaning:"n. \u63d0\u793a\u8bcd",sentence:"Precise prompts help AI generate ideal concept product renderings.",cn_translation:"\u7cbe\u51c6\u7684\u63d0\u793a\u8bcd\u80fd\u8ba9AI\u751f\u6210\u7406\u60f3\u7684\u6982\u5ff5\u4ea7\u54c1\u6e32\u67d3\u56fe\u3002",category:"AIGC\u751f\u6210\u8bbe\u8ba1\u4e13\u4e1a\u7c7b",etymology:"拿出来提示你，拉丁语的AI咒语。"},
+{word:"generate",phonetic:"/\u02c8d\u0292en\u0259re\u026at/",meaning:"v. \u751f\u6210",sentence:"This model can generate short dynamic videos from static pictures.",cn_translation:"\u8be5\u6a21\u578b\u53ef\u4ee5\u5c06\u9759\u6001\u56fe\u7247\u751f\u6210\u52a8\u6001\u77ed\u89c6\u9891\u3002",category:"AIGC\u751f\u6210\u8bbe\u8ba1\u4e13\u4e1a\u7c7b",etymology:"生出来造出来，拉丁语的生育哲学。"},
+{word:"texture generation",phonetic:"/\u02c8tekst\u0283\u0259 \u02ccd\u0292en\u0259\u02c8re\u026a\u0283n/",meaning:"n. \u7eb9\u7406\u751f\u6210",sentence:"AI texture generation greatly improves the efficiency of concept design.",cn_translation:"AI\u7eb9\u7406\u751f\u6210\u6781\u5927\u63d0\u5347\u4e86\u6982\u5ff5\u8bbe\u8ba1\u6548\u7387\u3002",category:"AIGC\u751f\u6210\u8bbe\u8ba1\u4e13\u4e1a\u7c7b",etymology:"编织加生育，纹理生成的双重玄学。"},
+{word:"upscale",phonetic:"/\u02cc\u028cp\u02c8ske\u026al/",meaning:"v. \u9ad8\u6e05\u653e\u5927",sentence:"Upscale the AI image to 4K for portfolio printing.",cn_translation:"\u5c06AI\u56fe\u50cf\u653e\u5927\u81f34K\uff0c\u7528\u4e8e\u4f5c\u54c1\u96c6\u6253\u5370\u8f93\u51fa\u3002",category:"AIGC\u751f\u6210\u8bbe\u8ba1\u4e13\u4e1a\u7c7b",etymology:"往上升级，拉丁语的变大变清晰魔法。"},
+{word:"deformation",phonetic:"/\u02ccdi\u02d0f\u0254\u02d0\u02c8me\u026a\u0283n/",meaning:"n. \u5f62\u53d8",sentence:"Real-time deformation effects can be made with Canvas and AI assistance.",cn_translation:"\u7ed3\u5408\u753b\u5e03\u4e0eAI\u8f85\u52a9\uff0c\u53ef\u4ee5\u5236\u4f5c\u5b9e\u65f6\u5f62\u53d8\u6548\u679c\u3002",category:"AIGC\u751f\u6210\u8bbe\u8ba1\u4e13\u4e1a\u7c7b",etymology:"离开原来的形状，拉丁语的变形金刚。"},
+{word:"iteration",phonetic:"/\u02cc\u026at\u0259\u02c8re\u026a\u0283n/",meaning:"n. \u8fed\u4ee3",sentence:"We complete multiple rounds of iteration based on AI generated drafts.",cn_translation:"\u6211\u4eec\u57fa\u4e8eAI\u521d\u7a3f\u5b8c\u6210\u591a\u8f6e\u8bbe\u8ba1\u8fed\u4ee3\u3002",category:"AIGC\u751f\u6210\u8bbe\u8ba1\u4e13\u4e1a\u7c7b",etymology:"再来一遍，拉丁语的反复横跳艺术。"},
+{word:"seed",phonetic:"/si\u02d0d/",meaning:"n. \u968f\u673a\u79cd\u5b50",sentence:"Fix the seed number to keep the image style consistent every generation.",cn_translation:"\u56fa\u5b9a\u79cd\u5b50\u6570\u503c\uff0c\u4fdd\u8bc1\u6bcf\u6b21\u751f\u6210\u98ce\u683c\u7edf\u4e00\u3002",category:"AIGC\u751f\u6210\u8bbe\u8ba1\u4e13\u4e1a\u7c7b",etymology:"种子发芽，古英语的随机数魔法。"},
+{word:"generative",phonetic:"/\u02c8d\u0292en\u0259r\u0259t\u026av/",meaning:"adj. \u751f\u6210\u5f0f\u7684",sentence:"Generative AI creates original content from prompts.",cn_translation:"\u751f\u6210\u5f0fAI\u6839\u636e\u63d0\u793a\u8bcd\u521b\u5efa\u539f\u521b\u5185\u5bb9\u3002",category:"AIGC\u751f\u6210\u8bbe\u8ba1\u4e13\u4e1a\u7c7b",etymology:"会生的，拉丁语的生成式AI标签。"},
+{word:"diffusion",phonetic:"/d\u026a\u02c8fju\u02d0\u0292n/",meaning:"n. \u6269\u6563",sentence:"Diffusion models generate images from random noise.",cn_translation:"\u6269\u6563\u6a21\u578b\u4ece\u968f\u673a\u566a\u58f0\u751f\u6210\u56fe\u50cf\u3002",category:"AIGC\u751f\u6210\u8bbe\u8ba1\u4e13\u4e1a\u7c7b",etymology:"分开倒出去，拉丁语的扩散模型原理。"},
+{word:"latent",phonetic:"/\u02c8le\u026at\u0259nt/",meaning:"adj. \u6f5c\u5728\u7684",sentence:"Latent space represents compressed visual information.",cn_translation:"\u6f5c\u5728\u7a7a\u95f4\u4ee3\u8868\u538b\u7f29\u7684\u89c6\u89c9\u4fe1\u606f\u3002",category:"AIGC\u751f\u6210\u8bbe\u8ba1\u4e13\u4e1a\u7c7b",etymology:"藏起来的，拉丁语的潜在空间秘密。"},
+{word:"canvas",phonetic:"/\u02c8k\u00e6nv\u0259s/",meaning:"n. \u753b\u5e03",sentence:"We draw particle animations directly on the HTML Canvas element.",cn_translation:"\u6211\u4eec\u5728HTML\u753b\u5e03\u4e0a\u76f4\u63a5\u7ed8\u5236\u7c92\u5b50\u52a8\u753b\u3002",category:"\u524d\u7aef&\u4ee3\u7801\u52a8\u6001\u5f00\u53d1\u7c7b",etymology:"大麻织的布，古法语的画布进化史。"},
+{word:"script",phonetic:"/skr\u026apt/",meaning:"n. \u811a\u672c",sentence:"Run a JS script to control automatic frame animation playback.",cn_translation:"\u8fd0\u884cJS\u811a\u672c\uff0c\u63a7\u5236\u5e27\u52a8\u753b\u81ea\u52a8\u64ad\u653e\u3002",category:"\u524d\u7aef&\u4ee3\u7801\u52a8\u6001\u5f00\u53d1\u7c7b",etymology:"写出来的东西，拉丁语的剧本代码一家亲。"},
+{word:"coordinate",phonetic:"/k\u0259\u028a\u02c8\u0254\u02d0d\u026an\u0259t/",meaning:"n. \u5750\u6807",sentence:"Use X and Y coordinates to locate elements on the canvas.",cn_translation:"\u4f7f\u7528XY\u5750\u6807\u5b9a\u4f4d\u753b\u5e03\u5143\u7d20\u3002",category:"\u524d\u7aef&\u4ee3\u7801\u52a8\u6001\u5f00\u53d1\u7c7b",etymology:"一起安排好，拉丁语的定位系统。"},
+{word:"parameter",phonetic:"/p\u0259\u02c8r\u00e6m\u0259t\u0259/",meaning:"n. \u53c2\u6570",sentence:"Tweak animation parameters to change speed and amplitude.",cn_translation:"\u8c03\u6574\u52a8\u753b\u53c2\u6570\uff0c\u6539\u53d8\u901f\u5ea6\u4e0e\u5e45\u5ea6\u3002",category:"\u524d\u7aef&\u4ee3\u7801\u52a8\u6001\u5f00\u53d1\u7c7b",etymology:"旁边量一量，希腊语的参数玄学。"},
+{word:"real-time",phonetic:"/\u02ccri\u02d0\u0259l \u02c8ta\u026am/",meaning:"adj. \u5b9e\u65f6\u7684",sentence:"MediaPipe supports real-time landmark detection on camera input.",cn_translation:"MediaPipe\u652f\u6301\u6444\u50cf\u5934\u5b9e\u65f6\u5173\u952e\u70b9\u68c0\u6d4b\u3002",category:"\u524d\u7aef&\u4ee3\u7801\u52a8\u6001\u5f00\u53d1\u7c7b",etymology:"真实时间，拉丁语加古英语的实时直播。"},
+{word:"algorithm",phonetic:"/\u02c8\u00e6l\u0261\u0259r\u026a\u00f0\u0259m/",meaning:"n. \u7b97\u6cd5",sentence:"The floating wave effect is calculated by sine wave algorithm.",cn_translation:"\u6d6e\u52a8\u6ce2\u6d6a\u6548\u679c\u7531\u6b63\u5f26\u6ce2\u7b97\u6cd5\u8ba1\u7b97\u751f\u6210\u3002",category:"\u524d\u7aef&\u4ee3\u7801\u52a8\u6001\u5f00\u53d1\u7c7b",etymology:"阿拉伯数学家名字，花拉子米的算法遗产。"},
+{word:"HTML",phonetic:"/\u02cce\u026at\u0283 ti\u02d0 em \u02c8el/",meaning:"n. \u8d85\u6587\u672c\u6807\u8bb0\u8bed\u8a00",sentence:"HTML structures the content of web pages.",cn_translation:"HTML\u6784\u5efa\u7f51\u9875\u5185\u5bb9\u7ed3\u6784\u3002",category:"\u524d\u7aef&\u4ee3\u7801\u52a8\u6001\u5f00\u53d1\u7c7b",etymology:"超文本标记语言，希腊语加拉丁语的混搭。"},
+{word:"CSS",phonetic:"/\u02ccsi\u02d0 es \u02c8es/",meaning:"n. \u5c42\u53e0\u6837\u5f0f\u8868",sentence:"CSS styles and layouts web page elements.",cn_translation:"CSS\u6837\u5f0f\u5316\u5e76\u5e03\u5c40\u7f51\u9875\u5143\u7d20\u3002",category:"\u524d\u7aef&\u4ee3\u7801\u52a8\u6001\u5f00\u53d1\u7c7b",etymology:"层叠样式表，意大利瀑布的浪漫。"},
+{word:"JavaScript",phonetic:"/\u02c8d\u0292\u0251\u02d0v\u0259skr\u026apt/",meaning:"n. JavaScript\u8bed\u8a00",sentence:"JavaScript adds interactivity to web pages.",cn_translation:"JavaScript\u4e3a\u7f51\u9875\u6dfb\u52a0\u4ea4\u4e92\u6027\u3002",category:"\u524d\u7aef&\u4ee3\u7801\u52a8\u6001\u5f00\u53d1\u7c7b",etymology:"Java加脚本，蹭热度的命名艺术。"},
+{word:"framework",phonetic:"/\u02c8fre\u026amw\u025c\u02d0k/",meaning:"n. \u6846\u67b6",sentence:"Use frameworks like React for efficient development.",cn_translation:"\u4f7f\u7528React\u7b49\u6846\u67b6\u8fdb\u884c\u9ad8\u6548\u5f00\u53d1\u3002",category:"\u524d\u7aef&\u4ee3\u7801\u52a8\u6001\u5f00\u53d1\u7c7b",etymology:"框架加工作，搬砖人的脚手架。"},
+{word:"research",phonetic:"/r\u026a\u02c8s\u025c\u02d0t\u0283/",meaning:"n. \u8c03\u7814",sentence:"Market research is the foundation of my design project.",cn_translation:"\u5e02\u573a\u8c03\u7814\u662f\u672c\u6b21\u8bbe\u8ba1\u9879\u76ee\u7684\u57fa\u7840\u3002",category:"\u4f5c\u54c1\u96c6\u9879\u76ee\u6d41\u7a0b\u7c7b",etymology:"再找一遍，法语的研究就是反复搜。"},
+{word:"concept",phonetic:"/\u02c8k\u0252nsept/",meaning:"n. \u521b\u4f5c\u6982\u5ff5",sentence:"The core concept of this work is the integration of digital and reality.",cn_translation:"\u4f5c\u54c1\u6838\u5fc3\u6982\u5ff5\u662f\u6570\u5b57\u4e0e\u73b0\u5b9e\u7684\u878d\u5408\u3002",category:"\u4f5c\u54c1\u96c6\u9879\u76ee\u6d41\u7a0b\u7c7b",etymology:"一起抓住的想法，拉丁语的概念捕捉。"},
+{word:"motivation",phonetic:"/\u02ccm\u0259\u028a\u026a\u02c8ve\u026a\u0283n/",meaning:"n. \u521b\u4f5c\u52a8\u673a",sentence:"My design motivation comes from daily digital life observation.",cn_translation:"\u6211\u7684\u521b\u4f5c\u52a8\u673a\u6765\u6e90\u4e8e\u5bf9\u65e5\u5e38\u6570\u5b57\u751f\u6d3b\u7684\u89c2\u5bdf\u3002",category:"\u4f5c\u54c1\u96c6\u9879\u76ee\u6d41\u7a0b\u7c7b",etymology:"动起来的理由，拉丁语的动力源泉。"},
+{word:"sketch",phonetic:"/sket\u0283/",meaning:"n. \u8349\u56fe",sentence:"I draw many hand sketches to sort out early ideas.",cn_translation:"\u6211\u7ed8\u5236\u5927\u91cf\u8349\u56fe\uff0c\u68b3\u7406\u521d\u671f\u521b\u610f\u3002",category:"\u4f5c\u54c1\u96c6\u9879\u76ee\u6d41\u7a0b\u7c7b",etymology:"即兴画的，希腊人的草图艺术。"},
+{word:"revision",phonetic:"/r\u026a\u02c8v\u026a\u0292n/",meaning:"n. \u4fee\u6539\u3001\u6539\u7248",sentence:"Do final revision according to tutor's feedback.",cn_translation:"\u6839\u636e\u5bfc\u5e08\u53cd\u9988\u5b8c\u6210\u6700\u7ec8\u4fee\u6539\u3002",category:"\u4f5c\u54c1\u96c6\u9879\u76ee\u6d41\u7a0b\u7c7b",etymology:"再看一遍，拉丁语的改稿循环。"},
+{word:"showcase",phonetic:"/\u02c8\u0283\u0259\u028ake\u026as/",meaning:"n. \u4f5c\u54c1\u5c55\u793a",sentence:"Arrange works logically for portfolio showcase.",cn_translation:"\u5408\u7406\u6392\u5e03\u4f5c\u54c1\uff0c\u5b8c\u6210\u4f5c\u54c1\u96c6\u5c55\u793a\u3002",category:"\u4f5c\u54c1\u96c6\u9879\u76ee\u6d41\u7a0b\u7c7b",etymology:"展示用的箱子，作品集的豪华别墅。"},
+{word:"brief",phonetic:"/bri\u02d0f/",meaning:"n. \u8bbe\u8ba1\u7b80\u62a5",sentence:"The brief outlines project requirements and goals.",cn_translation:"\u8bbe\u8ba1\u7b80\u62a5\u6982\u8ff0\u9879\u76ee\u8981\u6c42\u548c\u76ee\u6807\u3002",category:"\u4f5c\u54c1\u96c6\u9879\u76ee\u6d41\u7a0b\u7c7b",etymology:"短的就是好的，拉丁语的设计简报。"},
+{word:"brainstorm",phonetic:"/\u02c8bre\u026anst\u0254\u02d0m/",meaning:"v./n. \u5934\u8111\u98ce\u66b4",sentence:"Brainstorm ideas before sketching concepts.",cn_translation:"\u5728\u7ed8\u5236\u6982\u5ff5\u8349\u56fe\u524d\u8fdb\u884c\u5934\u8111\u98ce\u66b4\u3002",category:"\u4f5c\u54c1\u96c6\u9879\u76ee\u6d41\u7a0b\u7c7b",etymology:"大脑风暴，创意人的集体发疯。"},
+{word:"development",phonetic:"/d\u026a\u02c8vel\u0259pm\u0259nt/",meaning:"n. \u5f00\u53d1",sentence:"Development phase turns concepts into final products.",cn_translation:"\u5f00\u53d1\u9636\u6bb5\u5c06\u6982\u5ff5\u8f6c\u5316\u4e3a\u6700\u7ec8\u4ea7\u54c1\u3002",category:"\u4f5c\u54c1\u96c6\u9879\u76ee\u6d41\u7a0b\u7c7b",etymology:"解开包裹，法语的开发展开术。"},
+{word:"testing",phonetic:"/\u02c8test\u026a\u014b/",meaning:"n. \u6d4b\u8bd5",sentence:"User testing validates design effectiveness.",cn_translation:"\u7528\u6237\u6d4b\u8bd5\u9a8c\u8bc1\u8bbe\u8ba1\u6548\u679c\u3002",category:"\u4f5c\u54c1\u96c6\u9879\u76ee\u6d41\u7a0b\u7c7b",etymology:"陶器检验，拉丁语的测试祖传方法。"},
+{word:"innovation",phonetic:"/\u02cc\u026an\u0259\u02c8ve\u026a\u0283n/",meaning:"n. \u521b\u65b0\u6027",sentence:"The innovation lies in combining AI generation with hand-made design.",cn_translation:"\u521b\u65b0\u70b9\u5728\u4e8e\u7ed3\u5408AI\u751f\u6210\u4e0e\u624b\u5de5\u8bbe\u8ba1\u3002",category:"\u82f1\u6587\u7b54\u8fa9&\u9879\u76ee\u6c47\u62a5\u7c7b",etymology:"进入新状态，拉丁语的创新刷新。"},
+{word:"narrative",phonetic:"/\u02c8n\u00e6r\u0259t\u026av/",meaning:"n. \u53d9\u4e8b",sentence:"This video work uses visual narrative to tell a complete story.",cn_translation:"\u8be5\u89c6\u9891\u4f5c\u54c1\u901a\u8fc7\u89c6\u89c9\u53d9\u4e8b\u8bb2\u8ff0\u5b8c\u6574\u6545\u4e8b\u3002",category:"\u82f1\u6587\u7b54\u8fa9&\u9879\u76ee\u6c47\u62a5\u7c7b",etymology:"讲个故事，拉丁语的叙事艺术。"},
+{word:"implement",phonetic:"/\u02c8\u026ampl\u026am\u0259nt/",meaning:"v. \u5b9e\u73b0\u3001\u843d\u5730",sentence:"I implement this interactive effect through front-end code development.",cn_translation:"\u6211\u901a\u8fc7\u524d\u7aef\u4ee3\u7801\u5f00\u53d1\u5b9e\u73b0\u8be5\u4ea4\u4e92\u6548\u679c\u3002",category:"\u82f1\u6587\u7b54\u8fa9&\u9879\u76ee\u6c47\u62a5\u7c7b",etymology:"填进去实现，拉丁语的落地执行。"},
+{word:"presentation",phonetic:"/\u02ccprezn\u02c8te\u026a\u0283n/",meaning:"n. \u6f14\u793a\u3001\u6c47\u62a5",sentence:"Prepare a 15-minute presentation for the final defense.",cn_translation:"\u4e3a\u6700\u7ec8\u7b54\u8fa9\u51c6\u590715\u5206\u949f\u7684\u6c47\u62a5\u6f14\u793a\u3002",category:"\u82f1\u6587\u7b54\u8fa9&\u9879\u76ee\u6c47\u62a5\u7c7b",etymology:"站前面感受，拉丁语的汇报表演。"},
+{word:"feedback",phonetic:"/\u02c8fi\u02d0db\u00e6k/",meaning:"n. \u53cd\u9988",sentence:"Collect feedback from advisors to improve the project.",cn_translation:"\u6536\u96c6\u5bfc\u5e08\u53cd\u9988\u4ee5\u6539\u8fdb\u9879\u76ee\u3002",category:"\u82f1\u6587\u7b54\u8fa9&\u9879\u76ee\u6c47\u62a5\u7c7b",etymology:"喂回去，反馈就是把想法扔回来。"},
+{word:"Q&A",phonetic:"/\u02cckju\u02d0 \u0259nd \u02c8e\u026a/",meaning:"n. \u95ee\u7b54\u73af\u8282",sentence:"Practice the Q&A session to answer questions confidently.",cn_translation:"\u7ec3\u4e60\u95ee\u7b54\u73af\u8282\uff0c\u81ea\u4fe1\u5730\u56de\u7b54\u95ee\u9898\u3002",category:"\u82f1\u6587\u7b54\u8fa9&\u9879\u76ee\u6c47\u62a5\u7c7b",etymology:"问与答，拉丁语加古英语的问答环节。"},
+{word:"critique",phonetic:"/kr\u026a\u02c8ti\u02d0k/",meaning:"n. \u6279\u8bc4\u3001\u8bc4\u8bba",sentence:"Accept constructive critique to refine your work.",cn_translation:"\u63a5\u53d7\u5efa\u8bbe\u6027\u6279\u8bc4\u4ee5\u5b8c\u5584\u4f5c\u54c1\u3002",category:"\u82f1\u6587\u7b54\u8fa9&\u9879\u76ee\u6c47\u62a5\u7c7b",etymology:"判断一下，希腊人的批评艺术。"},
+{word:"defense",phonetic:"/d\u026a\u02c8fens/",meaning:"n. \u7b54\u8fa9",sentence:"The thesis defense evaluates your research and practice.",cn_translation:"\u8bba\u6587\u7b54\u8fa9\u8bc4\u4f30\u4f60\u7684\u7814\u7a76\u4e0e\u5b9e\u8df5\u6210\u679c\u3002",category:"\u82f1\u6587\u7b54\u8fa9&\u9879\u76ee\u6c47\u62a5\u7c7b",etymology:"打回去，拉丁语的答辩就是防守战。"},
+{word:"justify",phonetic:"/\u02c8d\u0292\u028cst\u026afa\u026a/",meaning:"v. \u8bc1\u660e...\u6b63\u5f53\u3001\u89e3\u91ca",sentence:"Justify your design decisions with research findings.",cn_translation:"\u7528\u8c03\u7814\u7ed3\u679c\u8bc1\u660e\u4f60\u7684\u8bbe\u8ba1\u51b3\u7b56\u3002",category:"\u82f1\u6587\u7b54\u8fa9&\u9879\u76ee\u6c47\u62a5\u7c7b",etymology:"做得公正，拉丁语的证明正当性。"},
+{word:"discussion",phonetic:"/d\u026a\u02c8sk\u028c\u0283n/",meaning:"n. \u8ba8\u8bba",sentence:"Discussion explores project implications and future work.",cn_translation:"\u8ba8\u8bba\u63a2\u8ba8\u9879\u76ee\u610f\u4e49\u548c\u672a\u6765\u5de5\u4f5c\u3002",category:"\u82f1\u6587\u7b54\u8fa9&\u9879\u76ee\u6c47\u62a5\u7c7b",etymology:"分开摇一摇，拉丁语的讨论就是摇脑袋。"},
+{word:"portfolio",phonetic:"/p\u0254\u02d0t\u02c8f\u0259\u028ali\u0259\u028a/",meaning:"n. \u4f5c\u54c1\u96c6",sentence:"Build a strong portfolio to showcase your best works.",cn_translation:"\u6253\u9020\u4e00\u4efd\u4f18\u79c0\u7684\u4f5c\u54c1\u96c6\u6765\u5c55\u793a\u4f60\u7684\u6700\u4f73\u4f5c\u54c1\u3002",category:"\u884c\u4e1a\u672f\u8bed\u4e0e\u804c\u4e1a\u53d1\u5c55\u7c7b",etymology:"带着纸页走，意大利人的作品集。"},
+{word:"brand identity",phonetic:"/br\u00e6nd a\u026a\u02c8dent\u0259ti/",meaning:"n. \u54c1\u724c\u8bc6\u522b",sentence:"Create a consistent brand identity across all visual touchpoints.",cn_translation:"\u5728\u6240\u6709\u89c6\u89c9\u63a5\u89e6\u70b9\u4e0a\u521b\u5efa\u7edf\u4e00\u7684\u54c1\u724c\u8bc6\u522b\u3002",category:"\u884c\u4e1a\u672f\u8bed\u4e0e\u804c\u4e1a\u53d1\u5c55\u7c7b",etymology:"燃烧标记加相同，品牌识别的火与同款。"},
+{word:"collaborate",phonetic:"/k\u0259\u02c8l\u00e6b\u0259re\u026at/",meaning:"v. \u534f\u4f5c",sentence:"Collaborate with cross-functional teams on design projects.",cn_translation:"\u4e0e\u8de8\u804c\u80fd\u56e2\u961f\u534f\u4f5c\u5b8c\u6210\u8bbe\u8ba1\u9879\u76ee\u3002",category:"\u884c\u4e1a\u672f\u8bed\u4e0e\u804c\u4e1a\u53d1\u5c55\u7c7b",etymology:"一起劳动，拉丁语的搬砖共同体。"},
+{word:"pitch",phonetic:"/p\u026at\u0283/",meaning:"n./v. \u63a8\u4ecb\u3001\u63d0\u6848",sentence:"Pitch your design concept to clients in 5 minutes.",cn_translation:"\u57285\u5206\u949f\u5185\u5411\u5ba2\u6237\u63a8\u4ecb\u4f60\u7684\u8bbe\u8ba1\u6982\u5ff5\u3002",category:"\u884c\u4e1a\u672f\u8bed\u4e0e\u804c\u4e1a\u53d1\u5c55\u7c7b",etymology:"刺一下投出去，古英语的提案就是扔想法。"},
+{word:"deadline",phonetic:"/\u02c8dedla\u026an/",meaning:"n. \u622a\u6b62\u65e5\u671f",sentence:"Manage your time effectively to meet the project deadline.",cn_translation:"\u6709\u6548\u7ba1\u7406\u65f6\u95f4\u4ee5\u6309\u65f6\u5b8c\u6210\u9879\u76ee\u3002",category:"\u884c\u4e1a\u672f\u8bed\u4e0e\u804c\u4e1a\u53d1\u5c55\u7c7b",etymology:"死线，过了就完蛋的那条线。"},
+{word:"iteration",phonetic:"/\u02cc\u026at\u0259\u02c8re\u026a\u0283n/",meaning:"n. \u8fed\u4ee3",sentence:"Multiple iterations improve the final design quality.",cn_translation:"\u591a\u8f6e\u8fed\u4ee3\u63d0\u5347\u6700\u7ec8\u8bbe\u8ba1\u8d28\u91cf\u3002",category:"\u884c\u4e1a\u672f\u8bed\u4e0e\u804c\u4e1a\u53d1\u5c55\u7c7b",etymology:"再来一遍，拉丁语的反复横跳艺术。"},
+{word:"trend",phonetic:"/trend/",meaning:"n. \u8d8b\u52bf",sentence:"Follow design trends while maintaining your own style.",cn_translation:"\u7d27\u8ddf\u8bbe\u8ba1\u8d8b\u52bf\uff0c\u540c\u65f6\u4fdd\u6301\u4e2a\u4eba\u98ce\u683c\u3002",category:"\u884c\u4e1a\u672f\u8bed\u4e0e\u804c\u4e1a\u53d1\u5c55\u7c7b",etymology:"滚来滚去，古英语的趋势就是潮流滚动。"},
+{word:"freelance",phonetic:"/\u02c8fri\u02d0l\u0251\u02d0ns/",meaning:"adj./n. \u81ea\u7531\u804c\u4e1a",sentence:"Many designers start their careers as freelance creatives.",cn_translation:"\u8bb8\u591a\u8bbe\u8ba1\u5e08\u4ee5\u81ea\u7531\u804c\u4e1a\u8005\u8eab\u4efd\u5f00\u542f\u804c\u4e1a\u751f\u6daf\u3002",category:"\u884c\u4e1a\u672f\u8bed\u4e0e\u804c\u4e1a\u53d1\u5c55\u7c7b",etymology:"自由长矛，中世纪骑士的自由职业。"},
+{word:"agency",phonetic:"/\u02c8e\u026ad\u0292\u0259nsi/",meaning:"n. \u8bbe\u8ba1\u516c\u53f8",sentence:"Work at a design agency to gain diverse project experience.",cn_translation:"\u5728\u8bbe\u8ba1\u516c\u53f8\u5de5\u4f5c\u83b7\u5f97\u591a\u6837\u5316\u9879\u76ee\u7ecf\u9a8c\u3002",category:"\u884c\u4e1a\u672f\u8bed\u4e0e\u804c\u4e1a\u53d1\u5c55\u7c7b",etymology:"做事的地方，拉丁语的代理机构。"},
+{word:"client",phonetic:"/\u02c8kla\u026a\u0259nt/",meaning:"n. \u5ba2\u6237",sentence:"Communicate effectively with clients to understand needs.",cn_translation:"\u4e0e\u5ba2\u6237\u6709\u6548\u6c9f\u901a\u4ee5\u4e86\u89e3\u9700\u6c42\u3002",category:"\u884c\u4e1a\u672f\u8bed\u4e0e\u804c\u4e1a\u53d1\u5c55\u7c7b",etymology:"依附别人的人，拉丁语的客户就是甲方爸爸。"}
+];
+let currentIndex=Math.floor(Math.random()*words.length);
+let viewCounts=new Array(words.length).fill(0);
+viewCounts[currentIndex]=1;
+let dotPositions=[];
+let hoveredDot=-1;
+
+const STORAGE_KEY='motif_view_counts';
+function saveCounts(){try{localStorage.setItem(STORAGE_KEY,JSON.stringify(viewCounts));}catch(e){}}
+function loadCounts(){
+    try{
+        const raw=localStorage.getItem(STORAGE_KEY);
+        if(!raw)return false;
+        const data=JSON.parse(raw);
+        if(Array.isArray(data)&&data.length===words.length){
+            viewCounts=data;
+            return true;
+        }
+    }catch(e){}
+    return false;
+}
+loadCounts();
+
+function render(){
+    viewCounts[currentIndex]++;
+    saveCounts();
+    const w=words[currentIndex];
+    const card=document.getElementById('card');
+    card.style.animation='none';
+    card.offsetHeight;
+    card.style.animation='slideIn 0.4s ease-out';
+    document.getElementById('category').textContent=w.category;
+    document.getElementById('word').textContent=w.word;
+    document.getElementById('phonetic').textContent=w.phonetic;
+    document.getElementById('meaning').textContent=w.meaning;
+    document.getElementById('etymology').textContent=w.etymology || '';
+    document.getElementById('sentence').textContent=w.sentence;
+    document.getElementById('cnTranslation').textContent=w.cn_translation;
+    document.getElementById('progress').textContent=(currentIndex+1)+' / '+words.length;
+}
+
+function speakCurrent(){speak(words[currentIndex].word);}
+function speak(text){if(!window.speechSynthesis)return;window.speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(text);u.lang='en-US';u.rate=0.92;window.speechSynthesis.speak(u);}
+
+function randomWord(){
+    let newIndex;
+    do{newIndex=Math.floor(Math.random()*words.length);}while(newIndex===currentIndex&&words.length>1);
+    currentIndex=newIndex;
+    render();
+}
+
+function getColorByCount(count){
+    if(count===0)return '#1a1a1a';
+    const palette=['#1a1a1a','#264653','#2a9d8f','#e9c46a','#f4a261','#e76f51','#e63946','#f72585','#7209b7','#3a86ff'];
+    const idx=Math.min(count-1,palette.length-1);
+    return palette[idx];
+}
+
+function generateSmileyDots(){
+    const dots=[];
+    const cx=200,cy=200;
+    // Face outline: 70 dots on circle r=150
+    for(let i=0;i<70;i++){
+        const a=(i/70)*Math.PI*2;
+        dots.push({x:cx+Math.cos(a)*150,y:cy+Math.sin(a)*150});
+    }
+    // Left eye: 10 dots on circle r=22 at (155,160)
+    for(let i=0;i<10;i++){
+        const a=(i/10)*Math.PI*2;
+        dots.push({x:155+Math.cos(a)*22,y:160+Math.sin(a)*22});
+    }
+    // Right eye: 10 dots on circle r=22 at (245,160)
+    for(let i=0;i<10;i++){
+        const a=(i/10)*Math.PI*2;
+        dots.push({x:245+Math.cos(a)*22,y:160+Math.sin(a)*22});
+    }
+    // Smile: 10 dots on arc r=80 from 0.2π to 0.8π
+    for(let i=0;i<10;i++){
+        const a=0.2*Math.PI+(i/9)*0.6*Math.PI;
+        dots.push({x:cx+Math.cos(a)*80,y:cy+Math.sin(a)*80});
+    }
+    return dots;
+}
+
+function drawSmiley(){
+    const canvas=document.getElementById('smileyCanvas');
+    const ctx=canvas.getContext('2d');
+    const size=400;
+    canvas.width=size;
+    canvas.height=size;
+    ctx.clearRect(0,0,size,size);
+
+    for(let i=0;i<dotPositions.length;i++){
+        const d=dotPositions[i];
+        const color=getColorByCount(viewCounts[i]);
+        ctx.beginPath();
+        ctx.arc(d.x,d.y,i===hoveredDot?9:6,0,Math.PI*2);
+        ctx.strokeStyle=color;
+        ctx.lineWidth=i===hoveredDot?2.5:1.5;
+        ctx.stroke();
+    }
+}
+
+function showSmiley(){
+    const card=document.getElementById('card');
+    card.style.animation='slideOut 0.3s ease-in forwards';
+    setTimeout(function(){
+        document.getElementById('container').style.display='none';
+        card.style.animation='';
+        const sv=document.getElementById('smileyView');
+        sv.classList.add('active');
+        dotPositions=generateSmileyDots();
+        drawSmiley();
+    },300);
+}
+
+function hideSmiley(){
+    document.getElementById('smileyView').classList.remove('active');
+    document.getElementById('container').style.display='block';
+    const card=document.getElementById('card');
+    card.style.animation='none';
+    card.offsetHeight;
+    card.style.animation='slideIn 0.4s ease-out';
+    render();
+}
+
+document.addEventListener('keydown',function(e){
+    if(document.getElementById('smileyView').classList.contains('active'))return;
+    if(e.key==='ArrowRight'||e.key==='ArrowLeft')randomWord();
+});
+
+let touchStartX=0,touchEndX=0;
+const cardEl=document.getElementById('card');
+cardEl.addEventListener('touchstart',function(e){touchStartX=e.changedTouches[0].screenX;},{passive:true});
+cardEl.addEventListener('touchend',function(e){touchEndX=e.changedTouches[0].screenX;handleSwipe();},{passive:true});
+function handleSwipe(){const threshold=50;if(touchEndX<touchStartX-threshold||touchEndX>touchStartX+threshold)randomWord();}
+
+const smileyCanvas=document.getElementById('smileyCanvas');
+smileyCanvas.addEventListener('click',function(e){
+    const rect=smileyCanvas.getBoundingClientRect();
+    const scale=400/rect.width;
+    const mx=(e.clientX-rect.left)*scale;
+    const my=(e.clientY-rect.top)*scale;
+    for(let i=0;i<dotPositions.length;i++){
+        const d=dotPositions[i];
+        const dist=Math.sqrt((d.x-mx)**2+(d.y-my)**2);
+        if(dist<14){
+            currentIndex=i;
+            hideSmiley();
+            break;
+        }
+    }
+});
+smileyCanvas.addEventListener('mousemove',function(e){
+    const rect=smileyCanvas.getBoundingClientRect();
+    const scale=400/rect.width;
+    const mx=(e.clientX-rect.left)*scale;
+    const my=(e.clientY-rect.top)*scale;
+    let found=-1;
+    for(let i=0;i<dotPositions.length;i++){
+        const d=dotPositions[i];
+        if(Math.sqrt((d.x-mx)**2+(d.y-my)**2)<14){found=i;break;}
+    }
+    if(found!==hoveredDot){hoveredDot=found;drawSmiley();smileyCanvas.style.cursor=found>=0?'pointer':'default';}
+});
+
+render();
+    </script>
+</body>
+</html>
